@@ -1,0 +1,104 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+extends typescript
+
+snippet st "style JSX" 
+style = {{ ${1} }}
+endsnippet
+
+snippet pa "position absolute" 
+position: 'absolute',
+endsnippet
+
+snippet 50h "center horizontally" 
+left: '50%', transform: 'translateX(-50%)',
+endsnippet
+
+snippet 50v "center vertically" 
+top: '50%', transform: 'translateY(-50%)',
+endsnippet
+
+snippet 50b "Description"
+top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+endsnippet
+
+snippet ma "react bootstrap component" 
+import {${1}} from '@material-ui/core'
+endsnippet
+snippet makeS "Description" 
+import { makeStyles } from '@material-ui/core/styles';
+endsnippet
+
+
+snippet rc "react functional component" 
+import React from 'react'
+const ${1}: React.FC = () => {
+}
+export default ${1}
+endsnippet
+
+snippet uS "useState Hook" 
+const [${1}, set${2}] = useState(${3:"${4}"})
+endsnippet
+snippet uE "useEffect Hook" 
+useEffect(() => {
+}, [${1}])
+endsnippet
+
+snippet lazy "lazy import" 
+const ${1} = lazy(() => import('${2}'));
+endsnippet
+
+snippet uT "Description" 
+const theme = useTheme()
+endsnippet
+snippet interval "set interval" 
+const interval = setInterval(() => {
+}, ${1});
+return () => clearInterval(interval)
+endsnippet
+
+snippet withS "withStyles" 
+const useStyles = withStyles({
+	${1}
+})
+endsnippet
+
+snippet uY "useStyles" 
+const classes = useStyles()
+endsnippet
+
+snippet uW "useInView" 
+import { useInView } from 'react-hook-inview';
+const [inViewRef, inView] = useInView();
+endsnippet
+
+snippet uT "useTheme" 
+const theme = useTheme()
+endsnippet
+
+
