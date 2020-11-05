@@ -3,8 +3,13 @@ set smarttab
 set cindent
 set tabstop=2
 set foldmethod=manual
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent! loadview 
+"autocmd BufWinLeave *.* mkview
+"autocmd BufWinEnter *.* silent! loadview 
+"" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
 
 
 set wrap
@@ -35,11 +40,12 @@ function! MapBoth(keys, rhs)
     execute 'inoremap' a:keys '<C-o>' . a:rhs . ' i'
 endfunction
 call MapBoth('<C-g>c', ':Git commit -a <CR>')
-call MapBoth('<C-g>d', ':Gdiff  <CR>')
+call MapBoth('<C-g>d', ':Gvdiffsplit HEAD~0 <C-f>ge')
 call MapBoth('<C-g>?', ':help fugitive <CR>')
 call MapBoth('<C-g>a', ':Git add -A <CR>')
 call MapBoth('<C-g>p', ':Git push <CR>')
 call MapBoth('<C-g>r', ':Gread! show HEAD~0:% <C-f>4h')
+call MapBoth('<C-g>l', ':Git diff --name-status --oneline HEAD~0 HEAD <C-f>Bge')
 
 
 "grep command hard code
@@ -50,7 +56,7 @@ nnoremap <C-c> :@c<CR>
 "buffers
 set laststatus=0
 set signcolumn=no
-autocmd BufLeave * silent update
+autocmd BufLeave * silent! update
 set autochdir
 function! s:file_explorer()
   if exists("g:NERDTree") && g:NERDTree.IsOpen()

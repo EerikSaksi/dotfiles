@@ -63,3 +63,14 @@ endsnippet
 snippet fields "graphql fields" 
 const fields = graphqlFields(info);
 endsnippet
+
+snippet gql "gql query" 
+const ${1} = gql \`query (){
+		(){
+		}
+}\`
+endsnippet
+
+snippet uQ "Description" 
+const {data: {${1}} = {}} = useQuery(${2})
+endsnippet

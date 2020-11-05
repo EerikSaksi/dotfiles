@@ -249,8 +249,8 @@ bindsym $mod+Shift+r exec --no-startup-id $i3-wm.program.refresh_ui
 bindsym $mod+Ctrl+r restart
 
 ## Session // Logout // <><Shift> e ##
-set_from_resource $i3-wm.program.logout i3-wm.program.logout /usr/bin/gnome-session-quit --logout
-bindsym $mod+Shift+e exec $i3-wm.program.logout
+##set_from_resource $i3-wm.program.logout i3-wm.program.logout /usr/bin/gnome-session-quit --logout
+##bindsym $mod+Shift+e exec $i3-wm.program.logout
 
 ## Session // Reboot // <><Shift> b ##
 set_from_resource $i3-wm.program.reboot i3-wm.program.reboot /usr/bin/gnome-session-quit --reboot
@@ -261,7 +261,7 @@ set_from_resource $i3-wm.program.shutdown i3-wm.program.shutdown /usr/bin/gnome-
 bindsym $mod+Shift+p exec $i3-wm.program.shutdown
 
 ## Session // Lock Screen // <> Escape ##
-set_from_resource $i3-wm.program.lock i3-wm.program.lock dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+#set_from_resource $i3-wm.program.lock i3-wm.program.lock dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
 
 ## Session // Sleep // <><Shift> s ##
 set_from_resource $i3-wm.program.sleep i3-wm.program.sleep systemctl suspend
@@ -510,7 +510,9 @@ exec --no-startup-id $i3-wm.program.3
 bindsym $mod+Return exec konsole 
 bindsym $mod+b exec google-chrome --new-window moodle.gla.ac.uk  
 bindsym $mod+a exec anki 
-bindsym $mod+m exec ~/Public/headphones.sh
+bindsym $mod+m exec ~/Scripts/headphones.sh
 
 exec redshift
 for_window [class="neovide"] fullscreen enable
+
+exec ~/Scripts/tunetype.sh
