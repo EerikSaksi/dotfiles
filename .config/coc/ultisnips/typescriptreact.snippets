@@ -27,7 +27,7 @@
 extends typescript
 
 snippet st "style JSX" 
-style = {{ ${1} }}
+style = { ${1} }
 endsnippet
 
 snippet pa "position absolute" 
@@ -102,3 +102,13 @@ const theme = useTheme()
 endsnippet
 
 
+snippet uM "useMutation" 
+const [${1}, {data}] = useMutation(${2})
+endsnippet
+snippet uQ "useQuery" 
+const {data} = useQuery(${2})
+endsnippet
+
+snippet uL "useLazyQuery" 
+const [${1}, {data}] = useLazyQuery(${2})
+endsnippet

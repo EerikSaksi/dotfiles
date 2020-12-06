@@ -49,8 +49,11 @@ call MapBoth('<C-g>l', ':Git diff --name-status --oneline HEAD~0 HEAD <C-f>Bge')
 
 
 "grep command hard code
-cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude-dir 'package-lock.json' -r .<C-f>^2Wa
+cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude-dir  'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' -r .<C-f>^2Wa
 nnoremap <C-c> :@c<CR>
+
+"register commands
+
 
 
 "buffers
@@ -67,6 +70,9 @@ function! s:file_explorer()
 endfunction
 nnoremap <silent> <C-n> :call <SID>file_explorer()<CR>
 inoremap <silent> <C-n> <Esc>:call <SID>file_explorer()<CR>
+vnoremap + :<C-f>is/\V
+nnoremap + :<C-f>is/\V
+
 vnoremap S :<C-f>iS/
 nnoremap S :<C-f>iS/
 
@@ -80,9 +86,10 @@ nnoremap / q/i\V
 vnoremap / q/i\V
 nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
 
-nnoremap <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
-nnoremap <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+autocmd CursorMoved *.{tsx} syntax sync fromstart
 "copying/selecting
 set virtualedit=block 
 inoremap <C-v> <Esc>v<C-v>
@@ -101,7 +108,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'bkad/CamelCaseMotion'
   Plug 'machakann/vim-sandwich'
-  Plug 'tpope/vim-abolish'
   Plug 'DanilaMihailov/beacon.nvim'
   Plug 'altercation/vim-colors-solarized'
   Plug 'vuciv/vim-bujo'
@@ -109,6 +115,8 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'justinmk/vim-sneak'
   Plug 'tpope/vim-fugitive'
   Plug 'EerikSaksi/vim-marks-overhaul'
+  Plug 'rhysd/vim-grammarous'
+  Plug 'tpope/vim-abolish'
 call plug#end()
 nnoremap <silent> ' :OverhaulJump <CR>
 nnoremap <silent> " :OverhaulMark<CR>
@@ -120,7 +128,8 @@ let g:beacon_shrink = 0
 let g:beacon_minimal_jump = 10
 syntax enable
 
-"colorscheme solarized
+colorscheme solarized
+set background=dark
 
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
@@ -187,3 +196,5 @@ nnoremap se :CocCommand snippets.editSnippets<cr>
 
 nmap <silent><Space> :call CocAction('format')<cr>
 nmap <leader>ac  <Plug>(coc-codeaction)
+vmap <leader>ac  <Plug>(coc-codeaction-selected)
+
