@@ -51,6 +51,8 @@ import {${1}} from '@material-ui/core'
 endsnippet
 snippet makeS "Description" 
 import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles(theme => ({
+}))
 endsnippet
 
 
@@ -62,7 +64,7 @@ export default ${1}
 endsnippet
 
 snippet uS "useState Hook" 
-const [${1}, set${2}] = useState(${3:"${4}"})
+const [xX, setXX] = useState($1)
 endsnippet
 snippet uE "useEffect Hook" 
 useEffect(() => {
@@ -111,4 +113,29 @@ endsnippet
 
 snippet uL "useLazyQuery" 
 const [${1}, {data}] = useLazyQuery(${2})
+endsnippet
+
+snippet uF "useFocusEffect" 
+useFocusEffect(
+	useCallback(() => {
+		${1}
+	}, [${2}])
+);
+endsnippet
+
+snippet uC "useCallback" 
+const $1 = useCallback(() => {
+}, []) 
+endsnippet
+
+
+
+snippet test "Jest test"
+import React from "react";
+import renderer from "react-test-renderer";
+import $1 from "../components/"
+it("matches snapshot", () => {
+  const tree = renderer.create(<$1/>).toJSON();
+  expect(tree).toMatchSnapshot();
+});
 endsnippet

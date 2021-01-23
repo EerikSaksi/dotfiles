@@ -45,14 +45,16 @@ call MapBoth('<C-g>?', ':help fugitive <CR>')
 call MapBoth('<C-g>a', ':Git add -A <CR>')
 call MapBoth('<C-g>p', ':Git push <CR>')
 call MapBoth('<C-g>r', ':Gread! show HEAD~0:% <C-f>4h')
-call MapBoth('<C-g>l', ':Git diff --name-status --oneline HEAD~0 HEAD <C-f>Bge')
+call MapBoth('<C-g>l', ':Git diff --name-status HEAD~0 <C-f>ge')
+call MapBoth('<C-g>b', ':Git checkout <C-f>')
+call MapBoth('<C-g>s', ':Git status <Cr>')
+call MapBoth('<C-g>m', ':Git merge <C-f>')
 
 
 "grep command hard code
-cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude-dir  'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' -r .<C-f>^2Wa
+cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared'  -r .<C-f>^2Wa
 nnoremap <C-c> :@c<CR>
 
-"register commands
 
 
 
@@ -82,8 +84,8 @@ nnoremap k gk
 nnoremap J gJ
 nnoremap $ g$
 nnoremap ^ g^
-nnoremap / q/i\V
-vnoremap / q/i\V
+"nnoremap / q/i\V
+"vnoremap / q/i\V
 nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -108,7 +110,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'bkad/CamelCaseMotion'
   Plug 'machakann/vim-sandwich'
-  Plug 'DanilaMihailov/beacon.nvim'
   Plug 'altercation/vim-colors-solarized'
   Plug 'vuciv/vim-bujo'
   Plug 'honza/vim-snippets'
@@ -121,14 +122,15 @@ call plug#end()
 nnoremap <silent> ' :OverhaulJump <CR>
 nnoremap <silent> " :OverhaulMark<CR>
 let g:vim_marks_overhaul#use_globals = 0
+colorscheme solarized
 
 let g:rainbow_active = 1
 let g:camelcasemotion_key = 'm'
 let g:beacon_shrink = 0
 let g:beacon_minimal_jump = 10
+let g:neovide_refresh_rate=120
 syntax enable
 
-colorscheme solarized
 set background=dark
 
 map f <Plug>Sneak_s
@@ -193,6 +195,7 @@ inoremap <expr> <C-j>
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 nnoremap se :CocCommand snippets.editSnippets<cr>
+nnoremap sv :e $MYVIMRC<cr>
 
 nmap <silent><Space> :call CocAction('format')<cr>
 nmap <leader>ac  <Plug>(coc-codeaction)

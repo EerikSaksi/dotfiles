@@ -8,6 +8,6 @@
       "filetypes": ["haskell", "lhaskell"]
     }
   },
-  "prettier.printWidth": 99999
+  "prettier.printWidth": 200
 
 }

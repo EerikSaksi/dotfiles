@@ -1,15 +1,18 @@
 export ZSH="/home/eerik/.oh-my-zsh"
-alias p="python3.7"
-alias v="nvim"
- 
-alias rm="trash-put"
+alias py="python3"
 alias x="xclip -selection clipboard"
 alias ls="ls -t"
+alias gc="git commit"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ZSH_THEME="robbyrussell"
+
 eval $(thefuck --alias)
 alias f="fuck"
-
+alias v="nvim"
+openVimWithJump(){
+  nvim -c ":OverhaulJump"
+}
+zle -N openVimWithJump
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -23,6 +26,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey "\e" vi-cmd-mode
 bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd "'" openVimWithJump
 export KEYTIMEOUT=1
 bindkey '^j' autosuggest-accept
 bindkey '^f' 'sdg'

@@ -504,9 +504,9 @@ set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
 
 bindsym $mod+Return exec konsole 
-bindsym $mod+b exec google-chrome --new-window moodle.gla.ac.uk  
-bindsym $mod+a exec anki 
+bindsym $mod+b 
 bindsym $mod+t exec ~/Scripts/headphones.sh
+bindsym $mod+b exec ~/Scripts/launchChrome.sh
 
 exec redshift
 for_window [class="neovide"] fullscreen enable
