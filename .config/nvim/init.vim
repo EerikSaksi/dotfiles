@@ -3,14 +3,11 @@ set smarttab
 set cindent
 set tabstop=2
 set foldmethod=manual
-"autocmd BufWinLeave *.* mkview
-"autocmd BufWinEnter *.* silent! loadview 
-"" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
 
+set viewoptions-=options
+autocmd BufWinLeave *  if expand("%") != "" | mkview | endif
+autocmd BufWinEnter *  if expand("%") != "" | silent! loadview | endif
+set scl=no
 
 set wrap
 set shiftwidth=2
@@ -52,9 +49,8 @@ call MapBoth('<C-g>m', ':Git merge <C-f>')
 
 
 "grep command hard code
-cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared'  -r .<C-f>^2Wa
+cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git'  -r .<C-f>^2Wa
 nnoremap <C-c> :@c<CR>
-
 
 
 
@@ -84,8 +80,8 @@ nnoremap k gk
 nnoremap J gJ
 nnoremap $ g$
 nnoremap ^ g^
-"nnoremap / q/i\V
-"vnoremap / q/i\V
+nnoremap / q/i\V
+vnoremap / q/i\V
 nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -118,11 +114,11 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'EerikSaksi/vim-marks-overhaul'
   Plug 'rhysd/vim-grammarous'
   Plug 'tpope/vim-abolish'
+  Plug 'lervag/vimtex'
 call plug#end()
 nnoremap <silent> ' :OverhaulJump <CR>
 nnoremap <silent> " :OverhaulMark<CR>
 let g:vim_marks_overhaul#use_globals = 0
-colorscheme solarized
 
 let g:rainbow_active = 1
 let g:camelcasemotion_key = 'm'
@@ -201,3 +197,4 @@ nmap <silent><Space> :call CocAction('format')<cr>
 nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
+hi CocFloating ctermbg=20

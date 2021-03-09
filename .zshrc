@@ -3,7 +3,10 @@ alias py="python3"
 alias x="xclip -selection clipboard"
 alias ls="ls -t"
 alias gc="git commit"
+alias v="nvim"
+alias rm="trash-put"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias pip="python3 -m pip"
 ZSH_THEME="robbyrussell"
 
 eval $(thefuck --alias)
@@ -19,18 +22,19 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/java
-plugins=(git)
+export PATH=$PATH:/usr/lib/postgresql/12/bin
+
+plugins=(git) 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
 bindkey -v 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 bindkey "\e" vi-cmd-mode
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd "'" openVimWithJump
 export KEYTIMEOUT=1
 bindkey '^j' autosuggest-accept
 bindkey '^f' 'sdg'
-export REACT_EDITOR=nvim
 
 function x11-clip-wrap-widgets() {
     # NB: Assume we are the first wrapper and that we only wrap native widgets
@@ -85,3 +89,4 @@ function zle-keymap-select zle-line-init zle-line-finish {
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
+
