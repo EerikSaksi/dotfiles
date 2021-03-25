@@ -94,7 +94,6 @@ inoremap <C-v> <Esc>v<C-v>
 set clipboard=unnamedplus
 set nohlsearch
 vnoremap V ^o$
-nnoremap ` " 
 nnoremap - "_d
 nnoremap _ "_D
 nnoremap <cr> i<cr><Esc>
@@ -105,7 +104,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'bkad/CamelCaseMotion'
-  Plug 'machakann/vim-sandwich'
   Plug 'altercation/vim-colors-solarized'
   Plug 'vuciv/vim-bujo'
   Plug 'honza/vim-snippets'
@@ -115,10 +113,14 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'rhysd/vim-grammarous'
   Plug 'tpope/vim-abolish'
   Plug 'lervag/vimtex'
+  Plug 'leafOfTree/vim-svelte-plugin'
+  Plug 'machakann/vim-sandwich'
 call plug#end()
 nnoremap <silent> ' :OverhaulJump <CR>
 nnoremap <silent> " :OverhaulMark<CR>
-let g:vim_marks_overhaul#use_globals = 0
+let g:vim_marks_overhaul#use_globals = 0 
+
+vmap st satdiv.<CR><Space>gv`<<Esc>kf""a
 
 let g:rainbow_active = 1
 let g:camelcasemotion_key = 'm'

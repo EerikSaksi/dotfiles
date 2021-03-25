@@ -7,11 +7,14 @@ alias v="nvim"
 alias rm="trash-put"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pip="python3 -m pip"
+alias f="fuck"
+alias v="nvim"
+alias gimme="sudo apt-get install"
+alias yeet="sudo apt-get autoremove --purge"
+
 ZSH_THEME="robbyrussell"
 
 eval $(thefuck --alias)
-alias f="fuck"
-alias v="nvim"
 openVimWithJump(){
   nvim -c ":OverhaulJump"
 }

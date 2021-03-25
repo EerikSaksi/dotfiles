@@ -398,10 +398,6 @@ set_from_resource $i3-wm.program.wifi i3-wm.program.wifi gnome-control-center --
 bindsym $mod+$i3-wm.binding.wifi exec $i3-wm.program.wifi
 
 
-## Launch // File Browser // <><Shift> n ##
-set_from_resource $i3-wm.binding.files i3-wm.binding.files Shift+n
-set_from_resource $i3-wm.program.files i3-wm.program.files /usr/bin/nautilus --new-window
-bindsym $mod+$i3-wm.binding.files exec $i3-wm.program.files
 
 ## Launch // Notification Viewer // <> n ##
 set_from_resource $i3-wm.binding.notification_ui i3-wm.binding.notification_ui n
@@ -644,5 +640,7 @@ exec --no-startup-id $i3-wm.program.3
 
 bindsym $mod+Return exec konsole 
 bindsym $mod+t exec ~/Scripts/headphones.sh
-bindsym $mod+b exec ~/Scripts/launchChrome.sh
+bindsym $mod+b exec google-chrome
+bindsym $mod+Shift+n exec google-chrome --incognito
 exec redshift
+
