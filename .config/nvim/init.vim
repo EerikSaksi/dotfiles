@@ -1,8 +1,14 @@
 set expandtab
+
 set smarttab
 set cindent
 set tabstop=2
 set foldmethod=manual
+
+
+set noshowmode
+set noruler
+
 
 set viewoptions-=options
 autocmd BufWinLeave *  if expand("%") != "" | mkview | endif
@@ -51,6 +57,7 @@ call MapBoth('<C-g>m', ':Git merge <C-f>')
 "grep command hard code
 cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git'  -r .<C-f>^2Wa
 nnoremap <C-c> :@c<CR>
+nnoremap sD :Gvdiffsplit e5e304054650fdf553ee2b9185d681c816844188<CR>
 
 
 
@@ -77,7 +84,6 @@ nnoremap S :<C-f>iS/
 "movement                                                                              
 nnoremap j gj
 nnoremap k gk
-nnoremap J gJ
 nnoremap $ g$
 nnoremap ^ g^
 nnoremap / q/i\V
@@ -87,7 +93,7 @@ nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-autocmd CursorMoved *.{tsx} syntax sync fromstart
+autocmd CursorMoved *.{svelte} syntax sync fromstart
 "copying/selecting
 set virtualedit=block 
 inoremap <C-v> <Esc>v<C-v>
@@ -99,6 +105,7 @@ nnoremap _ "_D
 nnoremap <cr> i<cr><Esc>
 
 call plug#begin("~/.config/nvim/plugged")	
+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
   Plug 'leafgarland/typescript-vim'
@@ -119,6 +126,7 @@ call plug#end()
 nnoremap <silent> ' :OverhaulJump <CR>
 nnoremap <silent> " :OverhaulMark<CR>
 let g:vim_marks_overhaul#use_globals = 0 
+set backupcopy=yes
 
 vmap st satdiv.<CR><Space>gv`<<Esc>kf""a
 
@@ -135,7 +143,7 @@ map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 let g:sneak#s_next = 1
 
-set guifont=Consolas:h18
+set guifont=Consolas:h14
 let g:bujoOpen = 0
 call MapBoth('<C-t>', ':call <SID>toggle_bujo()<CR>')
 
@@ -200,3 +208,5 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
 hi CocFloating ctermbg=20
+nmap sg <Plug>(grammarous-open-info-window)
+
