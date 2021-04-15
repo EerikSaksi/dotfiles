@@ -1,19 +1,23 @@
 set expandtab
-
 set smarttab
 set cindent
-set tabstop=2
+set tabstop=4
 set foldmethod=manual
 
+
+syntax enable
+set background=dark
 
 set noshowmode
 set noruler
 
 
 set viewoptions-=options
-autocmd BufWinLeave *  if expand("%") != "" | mkview | endif
+autocmd BufWinLeave *  if expand("%") != "" | silent! mkview | endif
 autocmd BufWinEnter *  if expand("%") != "" | silent! loadview | endif
 set scl=no
+
+autocmd BufRead *.tex :set spell
 
 set wrap
 set shiftwidth=2
@@ -36,7 +40,6 @@ inoremap  <C-w> <Esc><bar><C-w>
 inoremap <C-p> <c-r>=expand("%:p")<CR>
 
 "vim-fugitive
-"used to map a command to all modes
 function! MapBoth(keys, rhs)
     execute 'nnoremap' a:keys a:rhs
     execute 'vnoremap' a:keys a:rhs
@@ -89,11 +92,11 @@ nnoremap ^ g^
 nnoremap / q/i\V
 vnoremap / q/i\V
 nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
-
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-autocmd CursorMoved *.{svelte} syntax sync fromstart
+autocmd CursorMoved *.{tsx} syntax sync fromstart
+
 "copying/selecting
 set virtualedit=block 
 inoremap <C-v> <Esc>v<C-v>
@@ -106,7 +109,6 @@ nnoremap <cr> i<cr><Esc>
 
 call plug#begin("~/.config/nvim/plugged")	
 
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
@@ -122,9 +124,16 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'lervag/vimtex'
   Plug 'leafOfTree/vim-svelte-plugin'
   Plug 'machakann/vim-sandwich'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'dbmrq/vim-ditto'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
-nnoremap <silent> ' :OverhaulJump <CR>
-nnoremap <silent> " :OverhaulMark<CR>
+
+"Misc plugin
+nmap sg <Plug>(grammarous-open-info-window)
+nnoremap <silent> t :OverhaulJump <CR>
+nnoremap <silent> ' :OverhaulMark<CR>
 let g:vim_marks_overhaul#use_globals = 0 
 set backupcopy=yes
 
@@ -135,15 +144,13 @@ let g:camelcasemotion_key = 'm'
 let g:beacon_shrink = 0
 let g:beacon_minimal_jump = 10
 let g:neovide_refresh_rate=120
-syntax enable
 
-set background=dark
 
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 let g:sneak#s_next = 1
 
-set guifont=Consolas:h14
+set guifont=Consolas:h18
 let g:bujoOpen = 0
 call MapBoth('<C-t>', ':call <SID>toggle_bujo()<CR>')
 
@@ -156,7 +163,6 @@ function! s:toggle_bujo()
     :Todo
   endif
 endfunction
-
 
 "coc-nvim
 let g:coc_snippet_prev = '<c-h>'
@@ -208,5 +214,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
 hi CocFloating ctermbg=20
-nmap sg <Plug>(grammarous-open-info-window)
 
+
+command! Files call fzf#run({'source': 'find *  -maxdepth 0 -type f ', 'sink': 'e', 'window': {'width': 0.6, 'height': 0.4}})

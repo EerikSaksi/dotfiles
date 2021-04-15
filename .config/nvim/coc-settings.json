@@ -14,11 +14,6 @@
       "filetypes": ["haskell", "lhaskell"]
     }
   },
-  "tailwindCSS.jsLanguages": [
-    "javascript",
-    "javascriptreact",
-    "reason",
-    "typescriptreact",
-    "svelte"
-  ]
+  "editor.quickSuggestions.strings": true,
+  "prettier.printWidth": 180
 }

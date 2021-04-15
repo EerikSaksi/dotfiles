@@ -640,7 +640,6 @@ exec --no-startup-id $i3-wm.program.3
 
 bindsym $mod+Return exec konsole 
 bindsym $mod+t exec ~/Scripts/headphones.sh
-bindsym $mod+b exec google-chrome
-bindsym $mod+Shift+n exec google-chrome --incognito
+bindsym $mod+b exec google-chrome 
 exec redshift
 

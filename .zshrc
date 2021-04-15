@@ -1,7 +1,6 @@
 export ZSH="/home/eerik/.oh-my-zsh"
 alias py="python3"
 alias x="xclip -selection clipboard"
-alias ls="ls -t"
 alias gc="git commit"
 alias v="nvim"
 alias rm="trash-put"
@@ -11,7 +10,7 @@ alias f="fuck"
 alias v="nvim"
 alias gimme="sudo apt-get install"
 alias yeet="sudo apt-get autoremove --purge"
-
+alias lss='ls -t'
 ZSH_THEME="robbyrussell"
 
 eval $(thefuck --alias)
@@ -34,7 +33,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 bindkey "\e" vi-cmd-mode
 bindkey -M vicmd '?' history-incremental-search-backward
-bindkey -M vicmd "'" openVimWithJump
+bindkey -M vicmd "t" openVimWithJump
 export KEYTIMEOUT=1
 bindkey '^j' autosuggest-accept
 bindkey '^f' 'sdg'
