@@ -3,6 +3,7 @@ set smarttab
 set cindent
 set tabstop=4
 set foldmethod=manual
+autocmd FileType tagbar nmap <buffer>t <Nop>
 
 
 syntax enable
