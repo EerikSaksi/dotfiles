@@ -71,13 +71,6 @@ set signcolumn=no
 autocmd BufLeave * silent! update
 set autochdir
 
-function! s:file_explorer()
-  if exists("g:NERDTree") && g:NERDTree.IsOpen()
-    :NERDTreeToggle 
-  else
-    :NERDTreeFind
-  endif 
-endfunction
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
 let NERDTreeMinimalUI=1
@@ -85,9 +78,10 @@ let g:NERDTreeMapOpenInTab= ''
 if isdirectory(expand(".git"))
   let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
 endif
+let NERDTreeQuitOnOpen = 1
 
-nnoremap <silent> <C-n> :call <SID>file_explorer()<CR>
-inoremap <silent> <C-n> <Esc>:call <SID>file_explorer()<CR>
+nnoremap <silent> <C-n> :NERDTreeFind <bar>  wincmd l <bar> wq <CR>
+
 vnoremap + :<C-f>is/\V
 nnoremap + :<C-f>is/\V
 
