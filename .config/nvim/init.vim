@@ -70,6 +70,7 @@ set laststatus=0
 set signcolumn=no
 autocmd BufLeave * silent! update
 set autochdir
+
 function! s:file_explorer()
   if exists("g:NERDTree") && g:NERDTree.IsOpen()
     :NERDTreeToggle 
@@ -77,6 +78,14 @@ function! s:file_explorer()
     :NERDTreeFind
   endif 
 endfunction
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
+let NERDTreeMinimalUI=1
+let g:NERDTreeMapOpenInTab= ''
+if isdirectory(expand(".git"))
+  let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
+endif
+
 nnoremap <silent> <C-n> :call <SID>file_explorer()<CR>
 inoremap <silent> <C-n> <Esc>:call <SID>file_explorer()<CR>
 vnoremap + :<C-f>is/\V
@@ -215,6 +224,4 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
 hi CocFloating ctermbg=20
-
-
-command! Files call fzf#run({'source': 'find *  -maxdepth 0 -type f ', 'sink': 'e', 'window': {'width': 0.6, 'height': 0.4}})
+command! Files call fzf#run({'source': 'find *  -maxdepth 0 ', 'sink': 'e', 'window': {'width': 0.6, 'height': 0.4}})
