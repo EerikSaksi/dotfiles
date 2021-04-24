@@ -7,15 +7,15 @@ alias rm="trash-put"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pip="python3 -m pip"
 alias f="fuck"
-alias v="nvim"
 alias gimme="sudo apt-get install"
 alias yeet="sudo apt-get autoremove --purge"
 alias lss='ls -t'
 ZSH_THEME="robbyrussell"
-
 eval $(thefuck --alias)
+
+
 openVimWithJump(){
-  nvim -c ":OverhaulJump"
+  nvim -c ":OverhaulJump"; cd $(cat ~/.vim_last_used)
 }
 zle -N openVimWithJump
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -92,3 +92,10 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
+function precmd()
+{
+    emulate -L zsh
+    (( $#jobstates == 1 )) || return
+    local -i PID=${${${(s.:.)${(v)jobstates[1]}}[3]}%\=*}
+    cd $(readlink /proc/$PID/cwd)
+}

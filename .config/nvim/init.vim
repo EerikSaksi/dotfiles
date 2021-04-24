@@ -3,7 +3,6 @@ set smarttab
 set cindent
 set tabstop=4
 set foldmethod=manual
-autocmd FileType tagbar nmap <buffer>t <Nop>
 
 
 syntax enable
@@ -130,9 +129,13 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'machakann/vim-sandwich'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'dbmrq/vim-ditto'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
+
+autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used", "b")
+
+
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
