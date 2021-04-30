@@ -222,3 +222,4 @@ vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
 hi CocFloating ctermbg=20
 command! Files call fzf#run({'source': 'find *  -maxdepth 0 ', 'sink': 'e', 'window': {'width': 0.6, 'height': 0.4}})
+nmap <leader>rn <Plug>(coc-rename)

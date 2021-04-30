@@ -92,10 +92,3 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-function precmd()
-{
-    emulate -L zsh
-    (( $#jobstates == 1 )) || return
-    local -i PID=${${${(s.:.)${(v)jobstates[1]}}[3]}%\=*}
-    cd $(readlink /proc/$PID/cwd)
-}
