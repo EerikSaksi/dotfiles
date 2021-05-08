@@ -63,20 +63,15 @@ nnoremap <C-c> :@c<CR>
 nnoremap sD :Gvdiffsplit e5e304054650fdf553ee2b9185d681c816844188<CR>
 
 
-
 "buffers
 set laststatus=0
 set signcolumn=no
 autocmd BufLeave * silent! update
 set autochdir
-
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
 let NERDTreeMinimalUI=1
 let g:NERDTreeMapOpenInTab= ''
-if isdirectory(expand(".git"))
-  let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
-endif
 let NERDTreeQuitOnOpen = 1
 
 nnoremap <silent> <C-n> :NERDTreeFind <bar>  wincmd l <bar> wq <CR>
@@ -109,7 +104,6 @@ vnoremap V ^o$
 nnoremap - "_d
 nnoremap _ "_D
 nnoremap <cr> i<cr><Esc>
-
 call plug#begin("~/.config/nvim/plugged")	
 
   Plug 'preservim/nerdtree'
@@ -128,7 +122,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'leafOfTree/vim-svelte-plugin'
   Plug 'machakann/vim-sandwich'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'dbmrq/vim-ditto'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
@@ -136,6 +129,9 @@ call plug#end()
 autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used", "b")
 
 
+if isdirectory(expand(".git"))
+  let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
+endif
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
@@ -221,5 +217,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
 hi CocFloating ctermbg=20
-command! Files call fzf#run({'source': 'find *  -maxdepth 0 ', 'sink': 'e', 'window': {'width': 0.6, 'height': 0.4}})
-nmap <leader>rn <Plug>(coc-rename)
+nmap R <Plug>(coc-rename)
+
+
+

@@ -92,3 +92,4 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
+[ -f "/home/eerik/.ghcup/env" ] && source "/home/eerik/.ghcup/env" # ghcup-env
