@@ -6,15 +6,9 @@
       "args": ["--lsp"],
       "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
       "filetypes": ["haskell", "lhaskell"]
-    },
-    "languageserver": {
-      "graphql": {
-        "command": "graphql-lsp",
-        "args": ["server", "-m", "stream"],
-        "filetypes": ["typescript", "typescriptreact", "graphql"]
-      }
     }
   },
   "editor.quickSuggestions.strings": true,
-  "prettier.printWidth": 140
+  "prettier.printWidth": 140,
+  "graphql.filetypes": ["graphql"]
 }

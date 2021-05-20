@@ -59,7 +59,6 @@ call MapBoth('<C-g>m', ':Git merge <C-f>')
 
 "grep command hard code
 cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git'  -r .<C-f>^2Wa
-nnoremap <C-c> :@c<CR>
 nnoremap sD :Gvdiffsplit e5e304054650fdf553ee2b9185d681c816844188<CR>
 
 
@@ -93,7 +92,7 @@ nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-autocmd CursorMoved *.{tsx} syntax sync fromstart
+"autocmd CursorMoved *.{tsx} syntax sync fromstart
 
 "copying/selecting
 set virtualedit=block 
@@ -115,7 +114,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'honza/vim-snippets'
   Plug 'justinmk/vim-sneak'
   Plug 'tpope/vim-fugitive'
-  Plug 'EerikSaksi/vim-marks-overhaul'
   Plug 'rhysd/vim-grammarous'
   Plug 'tpope/vim-abolish'
   Plug 'lervag/vimtex'
@@ -124,9 +122,13 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'jparise/vim-graphql'
+  Plug 'EerikSaksi/vim-marks-overhaul'
 call plug#end()
 
 autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used", "b")
+
+call MapBoth('<C-c>', ':!npm run generate<CR>')
 
 
 if isdirectory(expand(".git"))
@@ -166,6 +168,10 @@ function! s:toggle_bujo()
     :Todo
   endif
 endfunction
+
+nnoremap <silent> t :OverhaulJump <CR>
+nnoremap <silent> ' :OverhaulMark<CR>
+
 
 "coc-nvim
 let g:coc_snippet_prev = '<c-h>'
