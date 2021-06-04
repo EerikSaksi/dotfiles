@@ -110,3 +110,23 @@ it("matches snapshot", () => {
   expect(tree).toMatchSnapshot();
 });
 endsnippet
+
+snippet RouteProp "React navigation type checking" 
+import {StackNavigationProp} from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
+
+type $1RouteProp = RouteProp<
+  RootStackParamList,
+  '$2'
+>;
+
+type $1NavigationProp = StackNavigationProp<
+  RootStackParamList,
+  '$2'
+>;
+type Props = {
+  route: $1RouteProp;
+  navigation: $1NavigationProp;
+};
+
+endsnippet

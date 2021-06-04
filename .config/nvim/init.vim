@@ -15,6 +15,8 @@ set noruler
 set viewoptions-=options
 autocmd BufWinLeave *  if expand("%") != "" | silent! mkview | endif
 autocmd BufWinEnter *  if expand("%") != "" | silent! loadview | endif
+
+"no sign column
 set scl=no
 
 autocmd BufRead *.tex :set spell
@@ -73,7 +75,7 @@ let NERDTreeMinimalUI=1
 let g:NERDTreeMapOpenInTab= ''
 let NERDTreeQuitOnOpen = 1
 
-nnoremap <silent> <C-n> :NERDTreeFind <bar>  wincmd l <bar> wq <CR>
+nnoremap <silent> <C-n> :CocCommand explorer --position floating <CR>
 
 vnoremap + :<C-f>is/\V
 nnoremap + :<C-f>is/\V
@@ -109,7 +111,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'bkad/CamelCaseMotion'
-  Plug 'altercation/vim-colors-solarized'
   Plug 'vuciv/vim-bujo'
   Plug 'honza/vim-snippets'
   Plug 'justinmk/vim-sneak'
@@ -124,16 +125,17 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'jparise/vim-graphql'
   Plug 'EerikSaksi/vim-marks-overhaul'
+  Plug 'nanotech/jellybeans.vim'
 call plug#end()
+colorscheme jellybeans
+
+set background=dark
 
 autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used", "b")
 
 call MapBoth('<C-c>', ':!npm run generate<CR>')
 
 
-if isdirectory(expand(".git"))
-  let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
-endif
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
@@ -222,8 +224,7 @@ nmap <silent><Space> :call CocAction('format')<cr>
 nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
-hi CocFloating ctermbg=20
 nmap R <Plug>(coc-rename)
+let g:coc_global_extensions = ['coc-tailwindcss', 'coc-snippets', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rust-analyzer', 'coc-explorer', 'coc-json']
 
-
-
+autocmd FileType coc-explorer set relativenumber 
