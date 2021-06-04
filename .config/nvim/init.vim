@@ -174,7 +174,6 @@ endfunction
 nnoremap <silent> t :OverhaulJump <CR>
 nnoremap <silent> ' :OverhaulMark<CR>
 
-
 "coc-nvim
 let g:coc_snippet_prev = '<c-h>'
 let g:coc_snippet_next = '<c-l>'
