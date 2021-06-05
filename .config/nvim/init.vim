@@ -76,6 +76,7 @@ let g:NERDTreeMapOpenInTab= ''
 let NERDTreeQuitOnOpen = 1
 
 nnoremap <silent> <C-n> :CocCommand explorer --position floating <CR>
+"nnoremap <silent> <C-n> :NERDTreeFind <bar>  wincmd l <bar> wq <CR>
 
 vnoremap + :<C-f>is/\V
 nnoremap + :<C-f>is/\V
@@ -106,8 +107,6 @@ nnoremap - "_d
 nnoremap _ "_D
 nnoremap <cr> i<cr><Esc>
 call plug#begin("~/.config/nvim/plugged")	
-
-  Plug 'preservim/nerdtree'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'bkad/CamelCaseMotion'
@@ -139,7 +138,7 @@ call MapBoth('<C-c>', ':!npm run generate<CR>')
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
-nnoremap <silent> t :OverhaulJump <CR>
+nnoremap <silent> t :OverhaulJump<CR>
 nnoremap <silent> ' :OverhaulMark<CR>
 let g:vim_marks_overhaul#use_globals = 0 
 set backupcopy=yes
@@ -170,9 +169,6 @@ function! s:toggle_bujo()
     :Todo
   endif
 endfunction
-
-nnoremap <silent> t :OverhaulJump <CR>
-nnoremap <silent> ' :OverhaulMark<CR>
 
 "coc-nvim
 let g:coc_snippet_prev = '<c-h>'
