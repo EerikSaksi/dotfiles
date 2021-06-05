@@ -16,9 +16,10 @@
     "p": "pasteFile",
     "I": "toggleHidden",
     "u": ["wait", "collapse", "gotoParent", "normal:G"],
-    "<cr>": ["wait", "expandable?", ["cd", "normal:G"], "open"],
-    "t": false,
-    "<esc>": ["collapse", "quit"]
+    "<esc>": ["collapse", "quit"],
+    "c": "collapse:recursive",
+    "t": false
   },
-  "explorer.floating.border.title": ""
+  "explorer.floating.border.title": "",
+  "explorer.expandStores": false
 }
