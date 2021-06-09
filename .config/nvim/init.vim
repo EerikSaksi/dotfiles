@@ -5,9 +5,6 @@ set tabstop=4
 set foldmethod=manual
 
 
-syntax enable
-set background=dark
-
 set noshowmode
 set noruler
 
@@ -69,14 +66,8 @@ set laststatus=0
 set signcolumn=no
 autocmd BufLeave * silent! update
 set autochdir
-let NERDTreeShowLineNumbers=1
-autocmd FileType nerdtree setlocal relativenumber
-let NERDTreeMinimalUI=1
-let g:NERDTreeMapOpenInTab= ''
-let NERDTreeQuitOnOpen = 1
 
 nnoremap <silent> <C-n> :CocCommand explorer --position floating <CR>
-"nnoremap <silent> <C-n> :NERDTreeFind <bar>  wincmd l <bar> wq <CR>
 
 vnoremap + :<C-f>is/\V
 nnoremap + :<C-f>is/\V
@@ -110,7 +101,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'bkad/CamelCaseMotion'
-  Plug 'vuciv/vim-bujo'
   Plug 'honza/vim-snippets'
   Plug 'justinmk/vim-sneak'
   Plug 'tpope/vim-fugitive'
@@ -120,36 +110,32 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'leafOfTree/vim-svelte-plugin'
   Plug 'machakann/vim-sandwich'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'jparise/vim-graphql'
   Plug 'EerikSaksi/vim-marks-overhaul'
   Plug 'nanotech/jellybeans.vim'
+  Plug 'vuciv/vim-bujo'
 call plug#end()
+syntax enable
+set background=dark
 colorscheme jellybeans
 
-set background=dark
-
 autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used", "b")
+nnoremap <silent> t :OverhaulJump<CR>
+nnoremap <silent> ' :OverhaulMark<CR>
 
 call MapBoth('<C-c>', ':!npm run generate<CR>')
 
 
+let g:camelcasemotion_key = 'm'
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
-nnoremap <silent> t :OverhaulJump<CR>
-nnoremap <silent> ' :OverhaulMark<CR>
-let g:vim_marks_overhaul#use_globals = 0 
+
 set backupcopy=yes
 
 vmap st satdiv.<CR><Space>gv`<<Esc>kf""a
-
-let g:rainbow_active = 1
-let g:camelcasemotion_key = 'm'
-let g:beacon_shrink = 0
-let g:beacon_minimal_jump = 10
 let g:neovide_refresh_rate=120
+
 
 
 map f <Plug>Sneak_s
@@ -218,6 +204,7 @@ nnoremap sv :e $MYVIMRC<cr>
 nmap <silent><Space> :call CocAction('format')<cr>
 nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
+
 
 nmap R <Plug>(coc-rename)
 let g:coc_global_extensions = ['coc-tailwindcss', 'coc-snippets', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rust-analyzer', 'coc-explorer', 'coc-json']

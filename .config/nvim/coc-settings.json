@@ -12,14 +12,19 @@
   "graphql.filetypes": ["graphql"],
   "tailwindCSS.jsLanguages": ["javascript", "javascriptreact", "reason", "typescriptreact", "svelte"],
   "explorer.keyMappings.global": {
-    "dd": "cutFile",
+    "dd": "delete",
     "p": "pasteFile",
-    "I": "toggleHidden",
+    "h": "toggleHidden",
     "u": ["wait", "collapse", "gotoParent", "normal:G"],
-    "<esc>": ["collapse", "quit"],
-    "c": "collapse:recursive",
-    "t": false
+    "<esc>": ["wait", "collapse:all", "quit"],
+    "<cr>": ["wait", "expandable?", "cd", "open", "collapse:all"],
+    "t": ["quit", "normal:t"],
+    "r": "rename",
+    "a": "addFile",
+    "A": "addDirectory"
   },
   "explorer.floating.border.title": "",
-  "explorer.expandStores": false
+  "explorer.expandStores": false,
+  "explorer.floating.width": -100,
+  "explorer.file.child.template": "[filename omitCenter 1][modified][readonly][icon | 1] [diagnosticError & 1]"
 }
