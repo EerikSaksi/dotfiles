@@ -40,8 +40,9 @@ export default ${1}
 endsnippet
 
 snippet uS "useState Hook" 
-const [xX, setXX] = useState($1)
+const [ab, setAb] = useState()
 endsnippet
+
 snippet uE "useEffect Hook" 
 useEffect(() => {
 }, [${1}])
@@ -129,4 +130,46 @@ type Props = {
   navigation: $1NavigationProp;
 };
 
+endsnippet
+
+
+
+snippet apolloCreate "Apollo mutation create with relevant options" 
+const [create$1] = useCreate$1Mutation({
+  variables: {
+	$2
+  },
+  update(cache, {data: create$1Data}) {
+	cache.modify({
+	  id: $3,
+	  fields: {
+		workoutPlans(existing$1s = {nodes: []}) {
+		  const new$1 =
+			create$1Data?.create$1?.workoutPlan;
+		  if (new$1) {
+			const new$1Fragment = cache.writeFragment({
+			  data: new$1,
+			  fragment: $1FragmentDoc,
+			});
+			return {
+			  nodes: [
+				...existing$1s.nodes,
+				new$1Fragment,
+			  ],
+			};
+		  }
+		},
+	  },
+	});
+  },
+  optimisticResponse: {
+	create$1: {
+	  __typename: "Create$1Payload",
+	  $1: {
+		__typename: "$1",
+		$2
+	  }
+	}
+  }
+});
 endsnippet

@@ -58,7 +58,9 @@ call MapBoth('<C-g>m', ':Git merge <C-f>')
 
 "grep command hard code
 cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git'  -r .<C-f>^2Wa
-nnoremap sD :Gvdiffsplit e5e304054650fdf553ee2b9185d681c816844188<CR>
+cnoremap <C-d> DB postgres://eerik:Postgrizzly@localhost:5432/rpgym <C-f>
+
+
 
 
 "buffers
@@ -68,6 +70,7 @@ autocmd BufLeave * silent! update
 set autochdir
 
 nnoremap <silent> <C-n> :CocCommand explorer --position floating <CR>
+
 
 vnoremap + :<C-f>is/\V
 nnoremap + :<C-f>is/\V
@@ -114,14 +117,18 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'EerikSaksi/vim-marks-overhaul'
   Plug 'nanotech/jellybeans.vim'
   Plug 'vuciv/vim-bujo'
+  Plug 'tpope/vim-dadbod'
 call plug#end()
 syntax enable
 set background=dark
 colorscheme jellybeans
 
+
+
+
 autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used", "b")
 nnoremap <silent> t :OverhaulJump<CR>
-nnoremap <silent> ' :OverhaulMark<CR>
+nnoremap <silent> T :OverhaulMark<CR>
 
 call MapBoth('<C-c>', ':!npm run generate<CR>')
 
@@ -207,6 +214,18 @@ vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
 
 nmap R <Plug>(coc-rename)
-let g:coc_global_extensions = ['coc-tailwindcss', 'coc-snippets', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rust-analyzer', 'coc-explorer', 'coc-json']
+
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+nmap <silent> gd <Plug>(coc-definition)
+
+let g:coc_global_extensions = ['coc-tailwindcss', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rust-analyzer', 'coc-explorer', 'coc-json', 'coc-snippets']
 
 autocmd FileType coc-explorer set relativenumber 

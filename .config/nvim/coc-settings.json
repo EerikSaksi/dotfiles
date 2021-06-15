@@ -12,7 +12,8 @@
   "graphql.filetypes": ["graphql"],
   "tailwindCSS.jsLanguages": ["javascript", "javascriptreact", "reason", "typescriptreact", "svelte"],
   "explorer.keyMappings.global": {
-    "dd": "delete",
+    "-d": "delete",
+    "dd": "cutFile",
     "p": "pasteFile",
     "h": "toggleHidden",
     "u": ["wait", "collapse", "gotoParent", "normal:G"],
@@ -21,10 +22,12 @@
     "t": ["quit", "normal:t"],
     "r": "rename",
     "a": "addFile",
-    "A": "addDirectory"
+    "A": "addDirectory",
+    "vs": "open:vsplit"
   },
   "explorer.floating.border.title": "",
   "explorer.expandStores": false,
   "explorer.floating.width": -100,
-  "explorer.file.child.template": "[filename omitCenter 1][modified][readonly][icon | 1] [diagnosticError & 1]"
+  "explorer.file.child.template": "[indent][filename omitCenter 1][modified][readonly][icon | 1] [diagnosticError & 1]",
+  "sql.database": "postgresql"
 }

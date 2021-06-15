@@ -10,6 +10,7 @@ alias f="fuck"
 alias gimme="sudo apt-get install"
 alias yeet="sudo apt-get autoremove --purge"
 alias lss='ls -t'
+
 ZSH_THEME="robbyrussell"
 eval $(thefuck --alias)
 
@@ -19,13 +20,12 @@ openVimWithJump(){
 }
 zle -N openVimWithJump
 export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/java
 export PATH=$PATH:/usr/lib/postgresql/12/bin
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 
 plugins=(git) 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
