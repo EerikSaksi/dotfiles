@@ -56,10 +56,9 @@ call MapBoth('<C-g>s', ':Git status <Cr>')
 call MapBoth('<C-g>m', ':Git merge <C-f>')
 
 
-"grep command hard code
+"command remaps
 cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git'  -r .<C-f>^2Wa
 cnoremap <C-d> DB postgres://eerik:Postgrizzly@localhost:5432/rpgym <C-f>
-
 
 
 
@@ -130,7 +129,6 @@ autocmd BufEnter * call writefile([expand('%:p:h') ], $HOME . "/.vim_last_used",
 nnoremap <silent> t :OverhaulJump<CR>
 nnoremap <silent> T :OverhaulMark<CR>
 
-call MapBoth('<C-c>', ':!npm run generate<CR>')
 
 
 let g:camelcasemotion_key = 'm'
@@ -226,6 +224,8 @@ omap ac <Plug>(coc-classobj-a)
 
 nmap <silent> gd <Plug>(coc-definition)
 
-let g:coc_global_extensions = ['coc-tailwindcss', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rust-analyzer', 'coc-explorer', 'coc-json', 'coc-snippets']
+let g:coc_global_extensions = ['coc-explorer', 'coc-tailwindcss', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rls', 'coc-json', 'coc-snippets']
 
 autocmd FileType coc-explorer set relativenumber 
+inoremap jk <Esc>
+inoremap kj <Esc>

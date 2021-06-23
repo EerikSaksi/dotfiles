@@ -27,7 +27,7 @@
   },
   "explorer.floating.border.title": "",
   "explorer.expandStores": false,
-  "explorer.floating.width": -100,
+  "explorer.floating.width": -80,
   "explorer.file.child.template": "[indent][filename omitCenter 1][modified][readonly][icon | 1] [diagnosticError & 1]",
   "sql.database": "postgresql"
 }
