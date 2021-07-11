@@ -8,26 +8,27 @@
       "filetypes": ["haskell", "lhaskell"]
     }
   },
-  "prettier.printWidth": 140,
+  "prettier.printWidth": 180,
   "graphql.filetypes": ["graphql"],
-  "tailwindCSS.jsLanguages": ["javascript", "javascriptreact", "reason", "typescriptreact", "svelte"],
   "explorer.keyMappings.global": {
     "-d": "delete",
     "dd": "cutFile",
     "p": "pasteFile",
     "h": "toggleHidden",
-    "u": ["wait", "collapse", "gotoParent", "normal:G"],
-    "<esc>": ["wait", "collapse:all", "quit"],
-    "<cr>": ["wait", "expandable?", "cd", "open", "collapse:all"],
+    "u": ["gotoParent", "normal:G"],
+    "<cr>": ["wait", "expandable?", "cd", "open", "normal:G"],
     "t": ["quit", "normal:t"],
     "r": "rename",
     "a": "addFile",
     "A": "addDirectory",
-    "vs": "open:vsplit"
+    "vs": "open:vsplit",
+    "C": ["wait", "collapse:recursive"]
   },
   "explorer.floating.border.title": "",
-  "explorer.expandStores": false,
   "explorer.floating.width": -80,
-  "explorer.file.child.template": "[indent][filename omitCenter 1][modified][readonly][icon | 1] [diagnosticError & 1]",
+  "explorer.file.child.template": "[indent][indent][filename omitCenter 1][modified][readonly][icon | 1] [diagnosticError & 1]",
   "sql.database": "postgresql"
 }
+
+
+

@@ -10,8 +10,14 @@ alias f="fuck"
 alias gimme="sudo apt-get install"
 alias yeet="sudo apt-get autoremove --purge"
 alias lss='ls -t'
+export DEBUG='postgraphile:postgres:notice graphile-build:warn'
 
 ZSH_THEME="robbyrussell"
+
+if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+fi
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 openVimWithJump(){
   nvim -c ":OverhaulJump"; cd $(cat ~/.vim_last_used)
@@ -28,7 +34,6 @@ export PATH=$PATH:/usr/lib/postgresql/12/bin
 plugins=(git) 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
 bindkey -v 
-source $ZSH/oh-my-zsh.sh
 
 if [ ! -f ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]; then
   git clone https://github.com/kutsan/zsh-system-clipboard ~/.zsh/plugins/zsh-system-clipboard
@@ -66,7 +71,6 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 
 [ -f "/home/eerik/.ghcup/env" ] && source "/home/eerik/.ghcup/env" # ghcup-env
-
 
 function vi-yank-xclip {
    zle vi-yank

@@ -68,8 +68,11 @@ set signcolumn=no
 autocmd BufLeave * silent! update
 set autochdir
 
-nnoremap <silent> <C-n> :CocCommand explorer --position floating <CR>
-
+function! s:OpenCocExplorer()
+  silent exe ':CocCommand explorer --position floating --reveal ' . expand("%:p") 
+endfunction
+call MapBoth('<C-n>', ':call <SID>OpenCocExplorer()<CR>')
+"call MapBoth('<C-n>', ":call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']]<CR>") 
 
 vnoremap + :<C-f>is/\V
 nnoremap + :<C-f>is/\V
@@ -147,7 +150,7 @@ map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 let g:sneak#s_next = 1
 
-set guifont=Consolas:h18
+set guifont=Consolas:h28
 let g:bujoOpen = 0
 call MapBoth('<C-t>', ':call <SID>toggle_bujo()<CR>')
 
@@ -224,8 +227,9 @@ omap ac <Plug>(coc-classobj-a)
 
 nmap <silent> gd <Plug>(coc-definition)
 
-let g:coc_global_extensions = ['coc-explorer', 'coc-tailwindcss', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rls', 'coc-json', 'coc-snippets']
+let g:coc_global_extensions = ['coc-explorer', 'coc-tailwindcss-intellisense', 'coc-prettier', 'coc-pairs', 'coc-graphql', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-rls', 'coc-json', 'coc-snippets']
 
 autocmd FileType coc-explorer set relativenumber 
 inoremap jk <Esc>
 inoremap kj <Esc>
+
