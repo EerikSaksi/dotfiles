@@ -1,0 +1,25 @@
+export ZSH="/home/eerik/.oh-my-zsh"
+alias py="python3"
+alias x="xclip -selection clipboard"
+alias gc="git commit"
+alias v="nvim"
+alias rm="trash-put"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias pip="python3 -m pip"
+alias f="fuck"
+alias gimme="sudo apt-get install"
+alias yeet="sudo apt-get autoremove --purge"
+alias lss='ls -t'
+export DEBUG='postgraphile:postgres:notice graphile-build:warn'
+
+# XONSH WIZARD START
+$AUTO_CD = '1'
+$AUTO_PUSHD = ''
+$AUTO_SUGGEST = ''
+$AUTO_SUGGEST_IN_COMPLETIONS = ''
+$IGNOREEOF = '1'
+$VI_MODE = '1'
+$XONSH_AUTOPAIR = '1'
+source-zsh "echo loading xonsh foreign shell"
+xontrib load apt_tabcomplete coreutils free_cwd prompt_vi_mode
+# XONSH WIZARD END
