@@ -148,7 +148,9 @@ let g:neovide_refresh_rate=120
 
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
-let g:sneak#s_next = 1
+map , <Plug>Sneak_;
+map < <Plug>Sneak_,
+
 
 set guifont=Consolas:h28
 let g:bujoOpen = 0
