@@ -1,0 +1,70 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet rust "Rust vimspector config" 
+{
+  "configurations": {
+    "Regular": {
+      "adapter": "CodeLLDB",
+      "configuration": {
+        "request": "launch",
+        "program": "\${workspaceRoot}/target/debug/$1"
+      },
+      "variables": {
+        "build": { "shell": "cargo run" }
+      },
+      "breakpoints": {
+        "exception": {
+          "cpp_catch": "",
+          "cpp_throw": "",
+          "objc_catch": "",
+          "objc_throw": "",
+          "swift_catch": "",
+          "swift_throw": ""
+        }
+      }
+    },
+    "Test": {
+      "adapter": "CodeLLDB",
+      "configuration": {
+        "request": "launch",
+        "program": "\$\{programName\}",
+        "args": [""]
+      },
+      "breakpoints": {
+        "exception": {
+          "cpp_catch": "",
+          "cpp_throw": "",
+          "objc_catch": "",
+          "objc_throw": "",
+          "swift_catch": "",
+          "swift_throw": ""
+        }
+      }
+    }
+  }
+}
+endsnippet

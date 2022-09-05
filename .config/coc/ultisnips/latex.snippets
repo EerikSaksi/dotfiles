@@ -1,0 +1,66 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet figure "Figure" 
+\begin{figure}[h!]
+  \caption{$1}
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{$2}
+\end{figure}
+endsnippet
+
+snippet listing "lstlisting" 
+\begin{lstlisting}[style=boxed]
+${0:${VISUAL}}
+\end{lstlisting}
+endsnippet
+
+snippet itemize "itemize" 
+\begin{itemize}
+	\item $1
+\end{itemize}
+endsnippet
+
+snippet e "emph surround" 
+\emph\{${0:${VISUAL}}\}
+endsnippet
+
+snippet c "cite surround" 
+\cite\{${0:${VISUAL}}\}
+endsnippet
+
+snippet b "bold" 
+\textbf\{${0:${VISUAL}}\}
+endsnippet
+
+snippet q "Quotation" 
+``${0:${VISUAL}}''
+endsnippet
+
+
+snippet minipage "Minipage" 
+\\begin\{minipage\}\{7.5cm\}
+${0:${VISUAL}}
+\\end\{minipage\}
+endsnippet

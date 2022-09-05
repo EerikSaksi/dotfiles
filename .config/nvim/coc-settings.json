@@ -1,0 +1,36 @@
+{
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+      "filetypes": ["haskell", "lhaskell"]
+    }
+  },
+  "prettier.printWidth": 180,
+  "explorer.keyMappings.global": {
+    "dd": "delete",
+    "p": "pasteFile",
+    "h": "toggleHidden",
+    "u": ["gotoParent", "collapse:recursive", "normal:G"],
+    "t": ["quit", "normal:t"],
+    "r": "rename",
+    "a": "addFile",
+    "A": "addDirectory",
+    "vs": "open:vsplit",
+    "C": ["wait", "collapse:recursive"],
+    "gg": ["normal:100k", "normal:2j"]
+  },
+  "explorer.file.child.template": "[indent][filename omitCenter 1] [icon | 1] [modified][readonly] [diagnosticError & 1][diagnosticWarning & 1]",
+  "explorer.floating.border.title": "",
+  "explorer.floating.width": -50,
+  "sql.database": "postgresql",
+  "explorer.openAction.strategy": "previousWindow",
+  "diagnostic.enableMessage": "always",
+  "explorer.icon.enableNerdfont": true,
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "svelte.enable-ts-plugin": true,
+  "tailwindCSS.jsLanguages": ["javascript", "javascriptreact", "reason", "typescriptreact"],
+  "rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"],
+  "python.analysis.typeCheckingMode": "off"
+}

@@ -1,0 +1,121 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+extends html
+
+snippet cl "println!" 
+println!("{}", $1);
+endsnippet
+
+snippet cla "class" 
+class = "$1"
+endsnippet
+
+snippet time "benchmarking time" 
+use std::time::Instant;
+let before = Instant::now();
+println!("Elapsed time: {:.2?}", before.elapsed());
+endsnippet
+
+snippet vec "new vector" 
+let mut $1: Vec<$2> = vec![];
+endsnippet
+snippet file "Write file"
+use std::fs::File;
+use std::io::prelude::*;
+let mut file = File::create("$1").unwrap();
+file.write_all($2).unwrap();
+endsnippet
+
+snippet bench "Benchmarking" 
+#![feature(test)]
+
+extern crate test;
+
+pub fn add_two(a: i32) -> i32 {
+    a + 2
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use test::Bencher;
+    #[bench]
+    fn bench_add_two(b: &mut Bencher) {
+        b.iter(|| add_two(2));
+    }
+}
+
+endsnippet
+
+snippet rfc "yew.rs functional component" 
+use yew::prelude::*;
+#[derive(Clone, PartialEq, Properties)]
+struct Props {
+	${1:args}
+}
+#[function_component(${2})]
+fn `!p snip.rv = t[2].lower()`(props: &Props) -> Html {
+	let Props { `!p snip.rv = ', '.join(map(lambda l: l[0: l.index(":")].replace(" ", ""), filter(lambda l: ":" in l, t[1].split("\n"))))` } = props;
+    html! {
+    }
+}
+
+endsnippet
+
+
+snippet rc "Class based Yew" 
+#[derive(PartialEq, Properties)]
+pub struct Props;
+
+pub struct $1;
+
+impl Component for $1 {
+    type Message = ();
+    type Properties = Props;
+
+    fn create(ctx: &Context<Self>) -> Self {
+        $1\{\}
+    }
+
+    fn view(&self, _ctx: &Context<Self>) -> Html {
+        html! {
+            // impl
+        }
+    }
+}
+
+endsnippet
+
+snippet update "Update yew function" 
+fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
+		match msg {
+				Msg::$1 => {
+				}
+		}
+}
+
+endsnippet

@@ -1,0 +1,146 @@
+# A valid snippet should starts with:
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+
+snippet it "mocha testing" 
+it('${1}', async () => {
+})
+endsnippet
+
+snippet test "describe test" 
+test('${1}', async () => {
+})
+endsnippet
+
+snippet cl "console log" 
+console.log(${0:${VISUAL}})
+endsnippet
+
+snippet sleep "Description" 
+await new Promise(resolve => setTimeout(resolve, ${1}));
+endsnippet
+
+snippet before "before test hook" 
+before(async() => {
+})
+endsnippet
+
+snippet findOne "findOne sequelize" 
+await ${1}.findOne({where: {${2}}})
+endsnippet
+
+snippet create "findOne sequelize" 
+await ${1}.create({${2}})
+endsnippet
+
+snippet findAll "findAll sequelize" 
+await ${1}.findAll({where: {${2}}})
+endsnippet
+
+snippet fields "graphql fields" 
+const fields = graphqlFields(info);
+endsnippet
+
+snippet gql "gql query" 
+const ${1} = gql\`${2}\`
+endsnippet
+
+snippet uQ "useQuery" 
+const {data: {${1}} = {}} = useQuery(${2})
+endsnippet
+
+snippet StyleS "Style sheet react native" 
+const styles = StyleSheet.create({
+	${1}
+})
+endsnippet
+
+
+
+
+snippet bb "Background color blue" 
+backgroundColor: 'lightblue'
+endsnippet
+
+snippet st "style JSX" 
+style = {{ ${1} }}
+endsnippet
+
+snippet pa "position absolute" 
+position: 'absolute',
+endsnippet
+
+snippet 50h "center horizontally" 
+left: '50%', transform: 'translateX(-50%)',
+endsnippet
+
+snippet 50v "center vertically" 
+top: '50%', transform: 'translateY(-50%)',
+endsnippet
+
+snippet 50b "Description"
+top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+endsnippet
+
+snippet lazy "React lazy import" 
+const = React.lazy(() => import());
+endsnippet
+
+snippet clas "className" 
+className = {classes.${1}}
+endsnippet
+
+snippet makeS "Description" 
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles(theme => ({
+}))
+endsnippet
+
+snippet interval "set interval" 
+const interval = setInterval(() => {
+}, ${1});
+return () => clearInterval(interval)
+endsnippet
+
+snippet resize "Resize images" 
+Array.from(document.getElementsByTagName("img")).forEach(img => console.log(`convert ${img.src} -resize ${img.width}x${img.height} ${img.src}`))
+endsnippet
+
+snippet p "p element" 
+<p>$1</p>
+endsnippet
+snippet verifyImgs "Check image sizes" 
+Array.from(document.getElementsByTagName('img')).forEach((img) => {       
+	if (img.naturalHeight < img.height || img.naturalWidth < img.width) { 
+		console.log(img.src);                                             
+	}                                                                     
+});                                                                       
+endsnippet
+
+snippet script "script" 
+<script>
+  $1
+</script>
+endsnippet
