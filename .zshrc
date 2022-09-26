@@ -6,7 +6,6 @@ alias x="xclip -selection clipboard"
 alias gc="git commit"
 alias v="~/Downloads/nvim.appimage"
 alias nv="neovide"
-alias rm="trash-put"
 alias ss="sleep 3; gnome-screenshot -acf /tmp/test && cat /tmp/test | xclip -i -selection clipboard -target image/png"
 alias stop_it=docker stop $(docker ps -a -q)
 alias update_dotfiles="dotfiles add .cache/vim-marks-overhaul/*; dotfiles add .config/coc/ultisnips/*; dotfiles commit -a -m \"Auto commit\"; dotfiles push"
@@ -22,7 +21,7 @@ alias f="fuck"
 alias gimme="sudo apt-get install"
 alias yeet="sudo apt-get autoremove --purge"
 alias lss='ls -rt'
-#source $HOME/.cargo/env
+source $HOME/.cargo/env
 export DEBUG='postgraphile:postgres:notice graphile-build:warn'
 
 ZSH_THEME="robbyrussell"
@@ -116,3 +115,4 @@ alias ls='ls --color=tty -rt'
 #unset __conda_setup
 # <<< conda initialize <<<
 
+alias rm="trash-put"

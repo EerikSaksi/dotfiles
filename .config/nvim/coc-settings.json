@@ -19,7 +19,7 @@
     "A": "addDirectory",
     "vs": "open:vsplit",
     "C": ["wait", "collapse:recursive"],
-    "gg": ["normal:100k", "normal:2j"]
+    "gg": ["normal:1000k", "normal:2j"]
   },
   "explorer.file.child.template": "[indent][filename omitCenter 1] [icon | 1] [modified][readonly] [diagnosticError & 1][diagnosticWarning & 1]",
   "explorer.floating.border.title": "",
@@ -32,5 +32,5 @@
   "svelte.enable-ts-plugin": true,
   "tailwindCSS.jsLanguages": ["javascript", "javascriptreact", "reason", "typescriptreact"],
   "rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"],
-  "python.analysis.typeCheckingMode": "off"
+  "python.analysis.typeCheckingMode": "off",
 }

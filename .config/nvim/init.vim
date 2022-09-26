@@ -14,7 +14,7 @@ autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview 
 
 "no sign column
-set scl=no
+set scl=yes
 
 "numbering
 set relativenumber
@@ -48,8 +48,9 @@ autocmd filetype gitcommit :set tw=100000
 
 
 "command line
-cnoremap <C-g> grep -i '' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git' --exclude-dir 'target'  -r .<C-f>^2Wa
+cnoremap <C-g> grep -i '' -r .<C-f>^2Wa
 call MapBoth('<C-f>', ':<C-f>')
+set wildignore=*/node_modules/*,package-lock.json,.*,target,venv
 
 
 "write finnish lol in .finn files lol
@@ -63,7 +64,6 @@ autocmd BufWinEnter * set nofixendofline
 
 "buffers
 set laststatus=0
-set signcolumn=no
 autocmd BufLeave * silent! w
 set autochdir
 
@@ -173,9 +173,10 @@ let g:neovide_transparency=0.8
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode = "sonicboom"
-let g:neovide_cursor_animation_length=0.015
+let g:neovide_cursor_animation_length=0.01
 let g:neovide_refresh_rate=144
 
+let MRU_Max_Entries = 10000
 
 "todo list
 let g:bujoOpen = 0
@@ -248,6 +249,7 @@ nnoremap sn :CocCommand snippets.editSnippets<cr>
 nnoremap sv :e $MYVIMRC <bar> source $MYVIMRC<cr>
 
 nmap <silent><Space> :call CocAction('format')<cr>
+vmap <silent><Space> <Plug>(coc-format-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 
@@ -256,7 +258,7 @@ nmap R <Plug>(coc-rename)
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
+xmap af <Plug>(fcoc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
 xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
@@ -264,7 +266,7 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
-let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright']
+let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git']
 
 au User CocExplorerOpenPost set relativenumber
 
@@ -318,7 +320,7 @@ let g:vimspector_sidebar_width = 40
 function! s:CustomiseUI()
   "call win_gotoid( g:vimspector_session_windows.output )
   "q
-	set scl=yes
+	"set scl=yes
 endfunction
 
 

@@ -24,7 +24,7 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 snippet cl "print" 
-print($1)
+print("\n\n\n{}\n\n\n".format(${0:${VISUAL}}))
 endsnippet
 
 snippet rustbin "test binary" 
@@ -54,7 +54,11 @@ endsnippet
 
 snippet p "Print object" 
 for attr in dir($1):
-	print("%s = %r" % (attr, getattr($1, attr)))
+	print("\n\n\n\n\n\n %s = %r" % (attr, getattr($1, attr)))
+endsnippet
+
+snippet c "print class" 
+print("\n\n\n\n\n\n" + str([i for i in ${0:${VISUAL}}.__dict__.keys() if i[:1] != '_']))
 endsnippet
 
 snippet be "" 

@@ -24,12 +24,6 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet sn "Ultisnips snippet definition" 
-`!p snip.rv = "snippet"` ${1:Tab_trigger} "${2:Description}" 
-`!p snip.rv = "${0:${VISUAL}}"`
-`!p snip.rv = "endsnippet"`
-endsnippet
-
-snippet visual "emph surround" 
-\$\{0:\$\{$1\}\}
+snippet script "script tag" 
+<script>${0:${VISUAL}}</script>
 endsnippet
