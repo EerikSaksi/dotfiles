@@ -51,12 +51,8 @@ nmap ]h <Plug>(coc-git-nextchunk)
 call MapBoth('<C-f>', ':<C-f>')
 
 
-function! s:CustomGrep(str, dir)
-  exe "grep -i '" . a:str . "' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git' --exclude-dir 'target' --exclude-dir 'venv'  -r " . a:dir
-
-endfunction
 command! -nargs=* CustomGrep call s:CustomGrep(<f-args>)
-cnoremap <C-g> CustomGrep<Space><Space>.<Space><C-f>3hi
+cnoremap <C-g> Ggrep -i ./** --ignore-case<C-f>19hi 
 
 "write finnish lol in .finn files lol
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
