@@ -52,7 +52,7 @@ call MapBoth('<C-f>', ':<C-f>')
 
 
 command! -nargs=* CustomGrep call s:CustomGrep(<f-args>)
-cnoremap <C-g> Ggrep -i ./** --ignore-case<C-f>19hi 
+cnoremap <C-g> Ggrep -i ./**<C-f>5hi 
 
 "write finnish lol in .finn files lol
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
