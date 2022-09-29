@@ -36,22 +36,27 @@ call MapBoth('<C-g>?', ':help fugitive <CR>')
 call MapBoth('<C-g>a', ':Git add -A <CR>')
 call MapBoth('<C-g>p', ':Git push <CR>')
 call MapBoth('<C-g>r', ':Gread HEAD~0:% <C-f>4h')
-call MapBoth('<C-g>l', ':Git diff --name-status HEAD~0 <C-f>ge')
+call MapBoth('<C-g>l', ':CocList --normal gstatus<CR>')
+call MapBoth('<C-g>L', ':Git diff --name-only master...<CR>')
 call MapBoth('<C-g>b', ':Git checkout <C-f>')
 call MapBoth('<C-g>s', ':Git status <Cr>')
 call MapBoth('<C-g>m', ':Git merge <C-f>')
-call MapBoth('<C-g>D', ':Gvdiffsplit 80c1004052b9beae32aaff110ce333f201626b73<CR>')
-autocmd filetype gitcommit :set tw=100000
+nmap [h <Plug>(coc-git-prevchunk)
+nmap ]h <Plug>(coc-git-nextchunk)
 
 
 
 
 
-"command line
-cnoremap <C-g> grep -i '' -r .<C-f>^2Wa
 call MapBoth('<C-f>', ':<C-f>')
-set wildignore=*/node_modules/*,package-lock.json,.*,target,venv
 
+
+function! s:CustomGrep(str, dir)
+  exe "grep -i '" . a:str . "' --exclude-dir 'node_modules' --exclude-dir 'public' --exclude-dir 'frontend' --exclude 'package-lock.json' --exclude-dir '.expo' --exclude-dir '.expo-shared' --exclude-dir '.git' --exclude-dir 'target' --exclude-dir 'venv'  -r " . a:dir
+
+endfunction
+command! -nargs=* CustomGrep call s:CustomGrep(<f-args>)
+cnoremap <C-g> CustomGrep<Space><Space>.<Space><C-f>3hi
 
 "write finnish lol in .finn files lol
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
@@ -115,7 +120,6 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'machakann/vim-sandwich'
   Plug 'jparise/vim-graphql'
   Plug 'EerikSaksi/vim-marks-overhaul'
-  Plug 'vuciv/vim-bujo'
   Plug 'puremourning/vimspector'
 	Plug 'drzel/vim-gui-zoom'
 	Plug 'nanotech/jellybeans.vim'
@@ -178,18 +182,6 @@ let g:neovide_refresh_rate=144
 
 let MRU_Max_Entries = 10000
 
-"todo list
-let g:bujoOpen = 0
-call MapBoth('<C-t>', ':call <SID>toggle_bujo()<CR>')
-function! s:toggle_bujo()
-  if g:bujoOpen
-    let g:bujoOpen = 0
-    :silent wq
-  else 
-    let g:bujoOpen = 1
-    :Todo
-  endif
-endfunction
 
 "file specific
 
