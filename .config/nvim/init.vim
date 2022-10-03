@@ -38,9 +38,14 @@ call MapBoth('<C-g>p', ':Git push <CR>')
 call MapBoth('<C-g>r', ':Gread HEAD~0:% <C-f>4h')
 call MapBoth('<C-g>l', ':CocList --normal gstatus<CR>')
 call MapBoth('<C-g>L', ':Git diff --name-only master...<CR>')
-call MapBoth('<C-g>b', ':Git checkout <C-f>')
-call MapBoth('<C-g>s', ':Git status <Cr>')
+call MapBoth('<C-g>s', ':Git status <CR>')
 call MapBoth('<C-g>m', ':Git merge <C-f>')
+call MapBoth('<C-g>h', ':call <SID>GitHistory()<CR>')
+
+function! s:GitHistory()
+	let url="" | redir => url | silent! GBrowse! | redir END 
+	exe "GBrowse " . trim(substitute(url, "blob", "commits", ""))
+endfunction
 nmap [h <Plug>(coc-git-prevchunk)
 nmap ]h <Plug>(coc-git-nextchunk)
 
@@ -51,8 +56,11 @@ nmap ]h <Plug>(coc-git-nextchunk)
 call MapBoth('<C-f>', ':<C-f>')
 
 
-command! -nargs=* CustomGrep call s:CustomGrep(<f-args>)
-cnoremap <C-g> Ggrep -i ./**<C-f>5hi 
+function! s:CustomGrep(search)
+	exe 'Ggrep -i ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**"'
+endfunction
+command! -nargs=1 CustomGrep call <SID>CustomGrep(<f-args>)
+cnoremap <C-g> CustomGrep <C-f>i
 
 "write finnish lol in .finn files lol
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
@@ -125,6 +133,7 @@ call plug#begin("~/.config/nvim/plugged")
 	Plug 'artanikin/vim-synthwave84'
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'editorconfig/editorconfig-vim'
+	Plug 'tpope/vim-rhubarb'
 call plug#end()
 
 let g:rainbow_active = 1
@@ -169,7 +178,7 @@ set smartcase
 set nohlsearch
 
 "neovide
-let g:neovide_transparency=0.8
+"let g:neovide_transparency=0.9
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode = "sonicboom"
@@ -294,7 +303,6 @@ endfunction
 
 nnoremap zR :call <SID>VimspectorBuildAndRunBinary()<CR>
 
-"autocmd FocusLost * :silent! exe '!code ' . expand('%:p')
 
 nnoremap zr :call <SID>VimspectorCustomReset()<CR>
 nnoremap zr :silent! exe '!code ' . expand('%:p')<CR>
