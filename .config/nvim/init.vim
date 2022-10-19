@@ -8,6 +8,7 @@ set tabstop=2
 set shiftwidth=2
 set wrap
 
+
 "always load previous cursor position
 set viewoptions-=options
 autocmd BufWinLeave * silent! mkview 
@@ -48,7 +49,7 @@ function! s:GitHistory()
 endfunction
 nmap [h <Plug>(coc-git-prevchunk)
 nmap ]h <Plug>(coc-git-nextchunk)
-
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
 
@@ -57,10 +58,14 @@ call MapBoth('<C-f>', ':<C-f>')
 
 
 function! s:CustomGrep(search)
-	exe 'Ggrep -i ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**"'
+	exe 'Ggrep ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**" -- ":!*migrations/**"'
 endfunction
 command! -nargs=1 CustomGrep call <SID>CustomGrep(<f-args>)
-cnoremap <C-g> CustomGrep <C-f>i
+cnoremap <C-g> CustomGrep -i <C-f>i
+nnoremap  gn :try <bar> cn <bar> catch <bar> call feedkeys(":CustomGrep \<lt>C-f>i") <bar> endtry<CR>
+nnoremap  gN :try <bar> cp <bar> catch <bar> call feedkeys(":CustomGrep \<lt>C-f>i") <bar> endtry<CR>
+
+
 
 "write finnish lol in .finn files lol
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
@@ -108,6 +113,7 @@ set clipboard=unnamedplus
 vnoremap V ^o$
 nnoremap - "_d
 nnoremap _ "_D
+vnoremap p pgvy
 nnoremap <cr> i<cr><Esc>
 call plug#begin("~/.config/nvim/plugged")	
   Plug 'leafgarland/typescript-vim'
@@ -134,7 +140,10 @@ call plug#begin("~/.config/nvim/plugged")
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'tpope/vim-rhubarb'
+	Plug 'michaeljsmith/vim-indent-object'
 call plug#end()
+
+"lua require('plugins')
 
 let g:rainbow_active = 1
 
@@ -145,12 +154,11 @@ inoremap <c-=> <Esc>:ZoomIn<CR>i
 inoremap <c--> <Esc>:ZoomOut<CR>i
 
 syntax enable
-"set termguicolors
+set termguicolors
 "hi! Normal ctermbg=NONE guibg=NONE
 "hi! NonText ctermbg=NONE guibg=NONE
 "hi CursorLine term=bold cterm=bold guibg=Grey40
 set background=dark
-colorscheme jellybeans
 
 nnoremap <silent> t :OverhaulJump<CR>
 nnoremap <silent> T :OverhaulMark<CR>
@@ -178,11 +186,11 @@ set smartcase
 set nohlsearch
 
 "neovide
-"let g:neovide_transparency=0.9
+let g:neovide_transparency=0.8
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode = "sonicboom"
-let g:neovide_cursor_animation_length=0.01
+let g:neovide_cursor_animation_length=0.02
 let g:neovide_refresh_rate=144
 
 let MRU_Max_Entries = 10000
@@ -263,9 +271,14 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
 let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git']
 
 au User CocExplorerOpenPost set relativenumber
+
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 inoremap <C-P> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
