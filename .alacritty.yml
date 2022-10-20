@@ -1,4 +1,4 @@
-background_opacity: 0.75
+background_opacity: 0.8
 key_bindings:
   - { key: Escape, mods: Control, mode: ~Search, action: ToggleViMode }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }

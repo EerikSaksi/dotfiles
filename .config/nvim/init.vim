@@ -148,6 +148,7 @@ call plug#end()
 "lua require('plugins')
 
 let g:rainbow_active = 1
+:highlight LineNr guifg=#AF6DF9
 
 set guifont=Jetbrains\ Mono:h24
 nmap <c-+> :ZoomIn<CR>
@@ -279,7 +280,7 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
-let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git']
+let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists']
 
 au User CocExplorerOpenPost set relativenumber
 
@@ -362,3 +363,4 @@ vnoremap zw :call <SID>watch_visual()<CR>
 nnoremap zo <C-w>h<C-w>h<C-w>k<C-w>k<C-w>T
 nnoremap zO mAZZ<C-w>S`A<C-w>l
 set nofixeol
+
