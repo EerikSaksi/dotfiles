@@ -4,7 +4,6 @@ alias py="python3"
 alias v="nvim"
 alias x="xclip -selection clipboard"
 alias gc="git commit"
-alias v="~/Downloads/nvim.appimage"
 alias nv="neovide"
 alias ss="sleep 3; gnome-screenshot -acf /tmp/test && cat /tmp/test | xclip -i -selection clipboard -target image/png"
 alias stop_it=docker stop $(docker ps -a -q)
@@ -29,7 +28,7 @@ ZSH_THEME="robbyrussell"
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 openeovideWithJump(){
-  nvim -c ":OverhaulJumpFromTerminal"
+	v -c ":OverhaulJump" 
 }
 zle -N openeovideWithJump
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -116,3 +115,4 @@ alias ls='ls --color=tty -rt'
 # <<< conda initialize <<<
 
 alias rm="trash-put"
+

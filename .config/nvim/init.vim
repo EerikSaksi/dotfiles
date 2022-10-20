@@ -141,6 +141,8 @@ call plug#begin("~/.config/nvim/plugged")
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'tpope/vim-rhubarb'
 	Plug 'michaeljsmith/vim-indent-object'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "lua require('plugins')
@@ -167,6 +169,11 @@ let g:camelcasemotion_key = 'm'
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
+
+command! -bang -nargs=* FzfGrep
+  \ call fzf#vim#grep(
+  \   "git grep '".shellescape(<q-args>) . "'", 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 
 
