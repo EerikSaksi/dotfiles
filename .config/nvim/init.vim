@@ -53,9 +53,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
 
+let $FZF_DEFAULT_OPTS="--bind ctrl-u:half-page-up,ctrl-d:half-page-down"
+
+
 
 call MapBoth('<C-f>', ':<C-f>')
-
 
 function! s:CustomGrep(search)
 	exe 'Ggrep ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**" -- ":!*migrations/**"'
@@ -97,7 +99,6 @@ nnoremap $ g$
 nnoremap ^ g^
 nnoremap / q/i\V
 vnoremap / q/i\V
-nnoremap <silent> <cr> :set paste<cr>o<esc>:set nopaste<cr>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 inoremap <C-u> <Esc><C-u>i
@@ -114,7 +115,6 @@ vnoremap V ^o$
 nnoremap - "_d
 nnoremap _ "_D
 vnoremap p pgvy
-nnoremap <cr> i<cr><Esc>
 call plug#begin("~/.config/nvim/plugged")	
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
@@ -148,7 +148,6 @@ call plug#end()
 "lua require('plugins')
 
 let g:rainbow_active = 1
-:highlight LineNr guifg=#AF6DF9
 
 set guifont=Jetbrains\ Mono:h24
 nmap <c-+> :ZoomIn<CR>
