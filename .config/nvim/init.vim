@@ -63,9 +63,8 @@ function! s:CustomGrep(search)
 	exe 'Ggrep ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**" -- ":!*migrations/**"'
 endfunction
 command! -nargs=1 CustomGrep call <SID>CustomGrep(<f-args>)
-cnoremap <C-g> CustomGrep -i <C-f>i
-nnoremap  gn :try <bar> cn <bar> catch <bar> call feedkeys(":CustomGrep \<lt>C-f>i") <bar> endtry<CR>
-nnoremap  gN :try <bar> cp <bar> catch <bar> call feedkeys(":CustomGrep \<lt>C-f>i") <bar> endtry<CR>
+cnoremap <C-g> FzfGrep <C-f>i
+
 
 
 
@@ -110,7 +109,6 @@ set clipboard=unnamedplus
 
 
 
-
 vnoremap V ^o$
 nnoremap - "_d
 nnoremap _ "_D
@@ -145,7 +143,7 @@ call plug#begin("~/.config/nvim/plugged")
 	Plug 'junegunn/fzf.vim'
 call plug#end()
 
-"lua require('plugins')
+lua require('plugins')
 
 let g:rainbow_active = 1
 
@@ -172,10 +170,23 @@ nmap sg <Plug>(grammarous-open-info-window)
 
 command! -bang -nargs=* FzfGrep
   \ call fzf#vim#grep(
-  \   "git grep '".shellescape(<q-args>) . "'", 0,
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 
+if has('persistent_undo')
+    " define a path to store persistent undo files.
+    let target_path = expand('~/.config/vim-persisted-undo/')
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call system('mkdir -p ' . target_path)
+    endif
+    " point Vim to the defined undo directory.
+    let &undodir = target_path
+    " finally, enable undo persistence.
+    set undofile
+endif
 
 
 
@@ -197,10 +208,13 @@ let g:neovide_transparency=0.8
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode = "sonicboom"
-let g:neovide_cursor_animation_length=0.02
+let g:neovide_cursor_animation_length=0.01
 let g:neovide_refresh_rate=144
 
 let MRU_Max_Entries = 10000
+
+nnoremap <silent> y% :let @+ = expand("%:p")<CR>
+
 
 
 "file specific
@@ -235,7 +249,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+echo     execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
   endif
@@ -362,4 +376,9 @@ vnoremap zw :call <SID>watch_visual()<CR>
 nnoremap zo <C-w>h<C-w>h<C-w>k<C-w>k<C-w>T
 nnoremap zO mAZZ<C-w>S`A<C-w>l
 set nofixeol
+
+"if vscode is open then keep neovim cursor in sync with vscode
+if len(system("pgrep code"))
+	nnoremap <silent> zr :silent! exe "!code --goto '" . expand("%:p") . ':' . line(".") . ":" . col(".") . "'"<CR>
+endif
 
