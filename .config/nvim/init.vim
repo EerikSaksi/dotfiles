@@ -191,10 +191,8 @@ endif
 
 
 "Searching
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-map n <Plug>Sneak_;
-map N <Plug>Sneak_,
+map f <Plug>(leap-forward-to)
+map F <Plug>(leap-backward-to)
 nnoremap , n
 nnoremap # N
 vnoremap , n

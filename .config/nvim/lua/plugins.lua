@@ -1,6 +1,9 @@
 require('packer').startup(function()
 	use 'maxmx03/FluoroMachine.nvim'
+	use 'ggandor/leap.nvim'
 end)
+
+require('leap').add_default_mappings()
 
 local success, fluoromachine = pcall(require, 'fluoromachine')
 
