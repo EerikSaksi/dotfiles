@@ -1,6 +1,3 @@
-"tabs and stuff
-set foldmethod=manual
-set noshowmode
 set noruler
 set smarttab
 set cindent
@@ -31,17 +28,17 @@ endfunction
 
 
 "vim-fugitive
-call MapBoth('<C-g>c', ':Git commit -a <CR>')
-call MapBoth('<C-g>d', ':Gvdiffsplit HEAD~0 <C-f>ge')
-call MapBoth('<C-g>?', ':help fugitive <CR>')
-call MapBoth('<C-g>a', ':Git add -A <CR>')
-call MapBoth('<C-g>p', ':Git push <CR>')
-call MapBoth('<C-g>r', ':Gread HEAD~0:% <C-f>4h')
-call MapBoth('<C-g>l', ':CocList --normal gstatus<CR>')
-call MapBoth('<C-g>L', ':Git diff --name-only master...<CR>')
-call MapBoth('<C-g>s', ':Git status <CR>')
-call MapBoth('<C-g>m', ':Git merge <C-f>')
-call MapBoth('<C-g>h', ':call <SID>GitHistory()<CR>')
+call MapBoth('gc', ':Git commit -a <CR>')
+call MapBoth('gD', ':Gvdiffsplit HEAD~0 <C-f>ge<Esc>r')
+call MapBoth('ga', ':Git add -A <CR>')
+call MapBoth('gp', ':Git push <CR>')
+call MapBoth('gR', ':Gread HEAD~0:% <C-f>4h<Esc>r')
+call MapBoth('gC', ':Git checkout %<CR>')
+call MapBoth('gl', ':CocList --normal gstatus<CR>')
+call MapBoth('gL', ':Git diff --name-only master...<CR>')
+call MapBoth('gs', ':Git status <CR>')
+call MapBoth('gm', ':Git merge <C-f>')
+call MapBoth('gh', ':call <SID>GitHistory()<CR>')
 
 function! s:GitHistory()
 	let url="" | redir => url | silent! GBrowse! | redir END 
@@ -52,9 +49,10 @@ nmap ]h <Plug>(coc-git-nextchunk)
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
+set inccommand=nosplit
+
 
 let $FZF_DEFAULT_OPTS="--bind ctrl-u:half-page-up,ctrl-d:half-page-down"
-
 
 
 call MapBoth('<C-f>', ':<C-f>')
@@ -63,12 +61,17 @@ function! s:CustomGrep(search)
 	exe 'Ggrep ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**" -- ":!*migrations/**"'
 endfunction
 command! -nargs=1 CustomGrep call <SID>CustomGrep(<f-args>)
-cnoremap <C-g> FzfGrep <C-f>i
+
+command! -bang -nargs=* FzfGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': getcwd()}), <bang>0)
+nnoremap <C-g> :FzfGrep 
 
 
 
 
-"write finnish lol in .finn files lol
+"write umlauts in .finn files 
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
 autocmd BufNewFile,BufRead *.finn inoremap O; Ö
 autocmd BufNewFile,BufRead *.finn inoremap a; ä
@@ -130,12 +133,8 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'EerikSaksi/vim-marks-overhaul'
   Plug 'puremourning/vimspector'
 	Plug 'drzel/vim-gui-zoom'
-	Plug 'nanotech/jellybeans.vim'
-	Plug 'dracula/vim'
 	Plug 'frazrepo/vim-rainbow'
 	Plug 'yegappan/mru'
-	Plug 'artanikin/vim-synthwave84'
-	Plug 'altercation/vim-colors-solarized'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'tpope/vim-rhubarb'
 	Plug 'michaeljsmith/vim-indent-object'
@@ -155,9 +154,6 @@ inoremap <c--> <Esc>:ZoomOut<CR>i
 
 syntax enable
 set termguicolors
-"hi! Normal ctermbg=NONE guibg=NONE
-"hi! NonText ctermbg=NONE guibg=NONE
-"hi CursorLine term=bold cterm=bold guibg=Grey40
 set background=dark
 
 nnoremap <silent> t :OverhaulJump<CR>
@@ -168,10 +164,6 @@ let g:camelcasemotion_key = 'm'
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
 
-command! -bang -nargs=* FzfGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 
 if has('persistent_undo')
@@ -193,34 +185,26 @@ endif
 "Searching
 map f <Plug>(leap-forward-to)
 map F <Plug>(leap-backward-to)
-nnoremap , n
-nnoremap # N
-vnoremap , n
-vnoremap # N
+
 set ignorecase
 set smartcase
 set nohlsearch
 
 "neovide
-let g:neovide_transparency=0.8
+let g:neovide_transparency=0.5
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
-let g:neovide_cursor_vfx_mode = "sonicboom"
-let g:neovide_cursor_animation_length=0.01
-let g:neovide_refresh_rate=144
-
-let MRU_Max_Entries = 10000
+let g:neovide_cursor_vfx_mode="ripple"
+let g:neovide_cursor_animation_length=0.02
+let g:neovide_cursor_vfx_particle_density = 10000.0
+let g:neovide_cursor_vfx_opacity = 10000.0
 
 nnoremap <silent> y% :let @+ = expand("%:p")<CR>
 
 
-
-"file specific
-
 "compile latex after saving
 autocmd BufWritePost *.tex silent !pdflatex <afile>
 autocmd BufRead *.tex :set spell
-vmap st satdiv.<CR><Space>gv`<<Esc>kf""a
 
 
 
@@ -247,7 +231,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
-echo     execute 'h '.expand('<cword>')
+		execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
   endif
@@ -337,7 +321,6 @@ nnoremap zR :call <SID>VimspectorBuildAndRunBinary()<CR>
 
 
 nnoremap zr :call <SID>VimspectorCustomReset()<CR>
-nnoremap zr :silent! exe '!code ' . expand('%:p')<CR>
 
 nnoremap zb :call vimspector#ToggleBreakpoint()<bar>:set scl=yes<CR>
 nnoremap zt :call vimspector#RunToCursor()<CR>
@@ -376,7 +359,4 @@ nnoremap zO mAZZ<C-w>S`A<C-w>l
 set nofixeol
 
 "if vscode is open then keep neovim cursor in sync with vscode
-if len(system("pgrep code"))
-	nnoremap <silent> zr :silent! exe "!code --goto '" . expand("%:p") . ':' . line(".") . ":" . col(".") . "'"<CR>
-endif
-
+nnoremap zr :silent! exe "!code --goto '" . expand("%:p") . ':' . line(".") . ":" . col(".") . "'" <CR>

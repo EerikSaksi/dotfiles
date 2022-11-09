@@ -1,7 +1,7 @@
 zmodload zsh/zprof
 export ZSH="${HOME}/.oh-my-zsh"
 alias py="python3"
-alias v="nvim"
+alias v="neovide"
 alias x="xclip -selection clipboard"
 alias gc="git commit"
 alias nv="neovide"
@@ -11,6 +11,8 @@ alias update_dotfiles="dotfiles add .cache/vim-marks-overhaul/*; dotfiles add .c
 
 
 alias rand='openssl rand -base64 60'
+
+export NEOVIDE_MULTIGRID=true
 
 #git init --bare $HOME/.dotfiles
 #dotfiles config --local status.showUntrackedFiles no
@@ -28,7 +30,7 @@ ZSH_THEME="robbyrussell"
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 openeovideWithJump(){
-	v -c ":OverhaulJump" 
+	v -- -c ":OverhaulJump" 
 }
 zle -N openeovideWithJump
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -115,4 +117,3 @@ alias ls='ls --color=tty -rt'
 # <<< conda initialize <<<
 
 alias rm="trash-put"
-
