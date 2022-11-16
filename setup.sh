@@ -26,7 +26,7 @@ rm ./google-chrome-stable_current_amd64.deb
 
 #rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install cargo-watch
+cargo install cargo-watch git-delta
 
 #neovim/neovide
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \

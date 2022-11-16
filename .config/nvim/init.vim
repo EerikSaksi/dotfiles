@@ -9,7 +9,11 @@ set wrap
 "always load previous cursor position
 set viewoptions-=options
 autocmd BufWinLeave * silent! mkview 
-autocmd BufWinEnter * silent! loadview 
+if exists('g:vscode')
+	autocmd BufRead * silent! loadview 
+else
+	autocmd BufWinEnter * silent! loadview 
+endif
 
 "no sign column
 set scl=yes
@@ -23,7 +27,7 @@ set number
 function! MapBoth(keys, rhs)
     execute 'nnoremap' a:keys a:rhs
     execute 'vnoremap' a:keys a:rhs
-    execute 'inoremap' a:keys '<C-o>' . a:rhs . ' i'
+    "execute 'inoremap' a:keys '<C-o>' . a:rhs . ' i'
 endfunction
 
 
@@ -191,15 +195,18 @@ set smartcase
 set nohlsearch
 
 "neovide
-let g:neovide_transparency=0.5
+let g:neovide_transparency=0.6
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
 let g:neovide_cursor_animation_length=0.02
-let g:neovide_cursor_vfx_particle_density = 10000.0
-let g:neovide_cursor_vfx_opacity = 10000.0
+let g:neovide_cursor_vfx_particle_density = 500.0
+let g:neovide_cursor_vfx_opacity = 1000.0
 
-nnoremap <silent> y% :let @+ = expand("%:p")<CR>
+nnoremap <silent> yp :let @+ = expand("%")<CR>
+nnoremap <silent> yP :let @+ = expand("%:p")<CR>
+
+
 
 
 "compile latex after saving
@@ -302,7 +309,7 @@ nnoremap zc :call vimspector#Continue()<CR>
 function! s:VimspectorCustomReset()
 	:call vimspector#Reset()
 	sleep 1m 
-	call vimspector#LaunchWithSettings( { 'configuration': 'attached'} )
+	call vimspector#LaunchWithSettings( { 'configuration': 'Regular'} )
 endfunction
 
 function! s:VimspectorBuildAndRunBinary() 
@@ -329,9 +336,9 @@ nnoremap zB :call vimspector#ClearBreakpoints()<CR>
 nmap zK <Plug>VimspectorBalloonEval
 let g:vimspector_sidebar_width = 40
 function! s:CustomiseUI()
-  "call win_gotoid( g:vimspector_session_windows.output )
-  "q
-	"set scl=yes
+  call win_gotoid( g:vimspector_session_windows.output )
+  q
+	set scl=yes
 endfunction
 
 
@@ -359,4 +366,6 @@ nnoremap zO mAZZ<C-w>S`A<C-w>l
 set nofixeol
 
 "if vscode is open then keep neovim cursor in sync with vscode
+"
 nnoremap zr :silent! exe "!code --goto '" . expand("%:p") . ':' . line(".") . ":" . col(".") . "'" <CR>
+"nnoremap zr :call <SID>VimspectorCustomReset()<CR>
