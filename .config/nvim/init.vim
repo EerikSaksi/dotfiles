@@ -45,7 +45,7 @@ call MapBoth('gm', ':Git merge <C-f>')
 call MapBoth('gh', ':call <SID>GitHistory()<CR>')
 
 function! s:GitHistory()
-	let url="" | redir => url | silent! GBrowse! | redir END 
+	let url="" |gredir => url | silent! GBrowse! | redir END 
 	exe "GBrowse " . trim(substitute(url, "blob", "commits", ""))
 endfunction
 nmap [h <Plug>(coc-git-prevchunk)
@@ -61,19 +61,15 @@ let $FZF_DEFAULT_OPTS="--bind ctrl-u:half-page-up,ctrl-d:half-page-down"
 
 call MapBoth('<C-f>', ':<C-f>')
 
-function! s:CustomGrep(search)
-	exe 'Ggrep ' . a:search . ' -- "' . getcwd() . '" --  ":!.github/**" -- ":!*migrations/**"'
-endfunction
 command! -nargs=1 CustomGrep call <SID>CustomGrep(<f-args>)
 
 command! -bang -nargs=* FzfGrep
   \ call fzf#vim#grep(
-  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   'git grep --line-number --untracked -- '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': getcwd()}), <bang>0)
-nnoremap <C-g> :FzfGrep 
 
 
-
+nnoremap gz :FzfGrep <C-f>i
 
 "write umlauts in .finn files 
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
@@ -88,6 +84,7 @@ autocmd BufWinEnter * set nofixendofline
 set laststatus=0
 autocmd BufLeave * silent! w
 set autochdir
+
 
 function! s:OpenCocExplorer()
   exe ':CocCommand explorer --toggle --position floating --reveal ' . expand("%:p") 
@@ -195,11 +192,11 @@ set smartcase
 set nohlsearch
 
 "neovide
-let g:neovide_transparency=0.6
+let g:neovide_transparency=0.8
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
-let g:neovide_cursor_animation_length=0.02
+let g:neovide_cursor_animation_length=0.04
 let g:neovide_cursor_vfx_particle_density = 500.0
 let g:neovide_cursor_vfx_opacity = 1000.0
 
@@ -218,8 +215,8 @@ autocmd BufRead *.tex :set spell
 "coc-nvim
 let g:coc_snippet_prev = '<c-h>'
 let g:coc_snippet_next = '<c-l>'
-imap <C-l> <Plug>(coc-snippets-expand-jump)
-vmap <C-l> <Plug>(coc-snippets-select)
+inoremap <C-l> <Plug>(coc-snippets-expand)
+vnoremap <C-l> <Plug>(coc-snippets-select)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -282,7 +279,7 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
-let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists']
+let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists', 'coc-fzf-preview']
 
 au User CocExplorerOpenPost set relativenumber
 

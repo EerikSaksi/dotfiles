@@ -57,10 +57,27 @@ for attr in dir($1):
 	print("\n\n\n\n\n\n %s = %r" % (attr, getattr($1, attr)))
 endsnippet
 
-snippet c "print class" 
-print("\n\n\n\n\n\n" + str([i for i in ${0:${VISUAL}}.__dict__.keys() if i[:1] != '_']))
-endsnippet
-
 snippet be "" 
 raise BaseException(${0:${VISUAL}})
+endsnippet
+
+snippet d "dictionary" 
+`!p  
+l = snip.v.text.split(".") 
+if len(l) != 2:
+	snip.rv = ""
+else:
+	snip.rv =  f"{l[0]}['{l[1]}']"
+`
+endsnippet
+
+
+snippet c "class" 
+`!p  
+l = snip.v.text.split("[") 
+if len(l) != 2:
+	snip.rv = ""
+else:
+	snip.rv =  f"{l[0]}.{l[1][1:-2]}"
+`
 endsnippet
