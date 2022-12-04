@@ -1,0 +1,184 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet cl "Raise Notice" 
+raise notice '${1}';
+endsnippet
+
+snippet generated "generated column" 
+$1 GENERATED ALWAYS as $2 stored,
+endsnippet
+
+snippet trigger "Create trigger" 
+CREATE FUNCTION $1()
+  RETURNS TRIGGER AS $$
+  BEGIN
+  END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER 
+before 
+FOR EACH ROW 
+EXECUTE procedure $1();
+endsnippet
+
+snippet unique "unique" 
+ALTER TABLE $1 drop CONSTRAINT if exists unique_$2;
+ALTER TABLE $1 ADD CONSTRAINT unique_$2 UNIQUE ($2);
+endsnippet
+
+
+snippet table "table" 
+drop table if exists $1;
+create table $1(
+  id integer primary key generated always as identity
+);
+grant all on $1 to public;
+endsnippet
+
+snippet enum "enum" 
+drop type if exists $1;
+create type $1 as enum ($2);
+endsnippet
+
+
+snippet index "index" 
+drop index on @s;
+create index if not exists on $1(id);
+endsnippet
+
+snippet rename  "rename" 
+DO $$
+BEGIN
+  IF EXISTS(SELECT *
+    FROM information_schema.columns
+    WHERE table_name='$1' and column_name='$2')
+  THEN
+      ALTER TABLE $1 RENAME COLUMN "$2" TO "$3";
+  END IF;
+END $$;
+endsnippet
+
+snippet insert "insert" 
+insert into $1($2) values () on conflict ($2) do nothing;
+endsnippet
+
+snippet policy "policy" 
+alter table $1 enable row level security;
+drop policy if exists $1_select_policy on $1;
+CREATE POLICY $1_select_policy ON $1 FOR SELECT USING (true);
+drop policy if exists $1_insert_policy on $1;
+create POLICY $1_insert_policy ON $1 FOR insert with check (app_user_id = (select current_user_id()));
+drop policy if exists $1_update_policy on $1;
+CREATE POLICY $1_update_policy ON $1 FOR update USING (app_user_id = (select current_user_id()));
+drop policy if exists $1_delete_policy on $1;
+CREATE POLICY $1_delete_policy ON $1 FOR delete USING (app_user_id = (select current_user_id()));
+endsnippet
+
+snippet references "references" 
+$1_id integer not null references $1(id) on delete cascade
+create index if not exists $2_$1_idx on "$2"($1_id);
+endsnippet
+
+
+snippet timestamp "timestamp" 
+created_at timestamp with time zone DEFAULT now() NOT NULL,
+updated_at timestamp with time zone DEFAULT now() NOT NULL
+comment on column $1.created_at is E'@omit update, delete, create';
+comment on column $1.updated_at is E'@omit update, delete, create';
+do $$
+  begin
+	CREATE TRIGGER set_timestamp BEFORE UPDATE ON $1 FOR EACH ROW EXECUTE procedure trigger_set_timestamp();
+  exception 
+    when sqlstate '42710' then
+      raise notice 'set_timestamp already defined';
+end $$;
+
+endsnippet
+
+snippet add column "add column" 
+alter TABLE $1 drop COLUMN if exists;
+ALTER TABLE $1 ADD COLUMN $2;
+endsnippet
+
+snippet drop constraint "drop constraint" 
+alter table $1 drop constraint if exists $1;
+endsnippet
+
+snippet sequence "reset sequence"
+alter sequence $1 restart;
+endsnippet
+
+snippet drop column "drop col" 
+alter table $1 drop column if exists $2 cascade;
+endsnippet
+
+snippet exception "catch" 
+do $$
+  begin
+  exception 
+    when sqlstate '$1' then
+      raise notice '$1';
+end $$;
+endsnippet
+
+snippet not null "not null" 
+ALTER TABLE $1 alter column $2 set not null;
+endsnippet
+
+snippet if "if"
+do $$
+begin  
+  if $1 then
+  end if;
+end $$
+endsnippet
+
+snippet function "function" 
+create or replace function $1() returns $2 as $$
+begin
+  $3
+end; $$ language plpgsql;
+grant all on function $1 to public;
+endsnippet
+
+snippet add constraint "add constraint" 
+ALTER TABLE $1 drop CONSTRAINT if exists $2;
+ALTER TABLE $1
+ADD CONSTRAINT $2
+CHECK (
+  ($3) IS NOT FALSE
+);
+endsnippet
+
+snippet omit "Description" 
+comment on column $1 is E'@omit';
+endsnippet
+
+
+snippet foreach "foreach" 
+foreach $2 in array $1 loop
+end loop;
+endsnippet

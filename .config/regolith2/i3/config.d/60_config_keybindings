@@ -1,0 +1,15 @@
+###############################################################################
+# System Management
+###############################################################################
+
+
+## Modify // Wifi Settings // <> w ##
+set_from_resource $i3-wm.binding.wifi i3-wm.binding.wifi w
+set_from_resource $i3-wm.program.wifi i3-wm.program.wifi regolith-control-center --class=floating_window wifi
+bindsym $mod+$i3-wm.binding.wifi exec --no-startup-id $i3-wm.program.wifi
+
+
+## Launch // File Browser // <><Shift> n ##
+set_from_resource $i3-wm.binding.files i3-wm.binding.files Shift+n
+set_from_resource $i3-wm.program.files i3-wm.program.files /usr/bin/nautilus --new-window
+bindsym $mod+$i3-wm.binding.files exec --no-startup-id $i3-wm.program.files

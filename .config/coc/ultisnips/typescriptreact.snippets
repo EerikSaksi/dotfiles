@@ -1,0 +1,175 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+extends typescript
+
+
+snippet ma "react bootstrap component" 
+import {${1}} from '@material-ui/core'
+endsnippet
+
+
+snippet rc "react functional component" 
+import React from 'react'
+const ${1}: React.FC = () => {
+}
+export default ${1}
+endsnippet
+
+snippet uS "useState Hook" 
+const [ab, setAb] = useState()
+endsnippet
+
+snippet uE "useEffect Hook" 
+useEffect(() => {
+}, [${1}])
+endsnippet
+
+snippet lazy "lazy import" 
+const ${1} = lazy(() => import('${2}'));
+endsnippet
+
+snippet uT "Description" 
+const theme = useTheme()
+endsnippet
+
+snippet withS "withStyles" 
+const useStyles = withStyles({
+	${1}
+})
+endsnippet
+
+snippet uY "useStyles" 
+const classes = useStyles()
+endsnippet
+
+snippet uW "useInView" 
+import { useInView } from 'react-hook-inview';
+const [inViewRef, inView] = useInView();
+endsnippet
+
+snippet uT "useTheme" 
+const theme = useTheme()
+endsnippet
+
+
+snippet uM "useMutation" 
+const [${1}, {data}] = useMutation(${2})
+endsnippet
+snippet uQ "useQuery" 
+const {data} = useQuery(${2})
+endsnippet
+
+snippet uL "useLazyQuery" 
+const [${1}, {data}] = useLazyQuery(${2})
+endsnippet
+
+snippet uF "useFocusEffect" 
+useFocusEffect(
+	useCallback(() => {
+		${1}
+	}, [${2}])
+);
+endsnippet
+
+snippet uC "useCallback" 
+const $1 = useCallback(() => {
+}, []) 
+endsnippet
+
+
+
+snippet test "Jest test"
+import React from "react";
+import renderer from "react-test-renderer";
+import $1 from "../components/"
+it("matches snapshot", () => {
+  const tree = renderer.create(<$1/>).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+endsnippet
+
+snippet RouteProp "React navigation type checking" 
+import {StackNavigationProp} from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
+
+type $1RouteProp = RouteProp<
+  RootStackParamList,
+  '$2'
+>;
+
+type $1NavigationProp = StackNavigationProp<
+  RootStackParamList,
+  '$2'
+>;
+type Props = {
+  route: $1RouteProp;
+  navigation: $1NavigationProp;
+};
+
+endsnippet
+
+
+
+snippet apolloCreate "Apollo mutation create with relevant options" 
+const [create$1] = useCreate$1Mutation({
+  variables: {
+	$2
+  },
+  update(cache, {data: create$1Data}) {
+	cache.modify({
+	  id: $3,
+	  fields: {
+		workoutPlans(existing$1s = {nodes: []}) {
+		  const new$1 =
+			create$1Data?.create$1?.workoutPlan;
+		  if (new$1) {
+			const new$1Fragment = cache.writeFragment({
+			  data: new$1,
+			  fragment: $1FragmentDoc,
+			});
+			return {
+			  nodes: [
+				...existing$1s.nodes,
+				new$1Fragment,
+			  ],
+			};
+		  }
+		},
+	  },
+	});
+  },
+  optimisticResponse: {
+	create$1: {
+	  __typename: "Create$1Payload",
+	  $1: {
+		__typename: "$1",
+		$2
+	  }
+	}
+  }
+});
+endsnippet

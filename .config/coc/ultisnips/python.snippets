@@ -1,0 +1,83 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet cl "print" 
+print("\n\n\n{}\n\n\n".format(${0:${VISUAL}}))
+endsnippet
+
+snippet rustbin "test binary" 
+import os
+import sys
+
+max_mtime = 0
+max_file = ""
+for dirname,subdirs,files in os.walk(sys.argv[1]):
+    for fname in files:
+        full_path = os.path.join(dirname, fname)
+        mtime = os.stat(full_path).st_mtime
+        if mtime > max_mtime:
+            max_mtime = mtime
+            max_dir = dirname
+            max_file = fname
+print(max_file)
+endsnippet
+
+snippet time "time" 
+import time
+start = time.time()
+$1
+end = time.time()
+print(end - start)
+endsnippet
+
+snippet p "Print object" 
+for attr in dir($1):
+	print("\n\n\n\n\n\n %s = %r" % (attr, getattr($1, attr)))
+endsnippet
+
+snippet be "" 
+raise BaseException(${0:${VISUAL}})
+endsnippet
+
+snippet d "dictionary" 
+`!p  
+l = snip.v.text.split(".") 
+if len(l) != 2:
+	snip.rv = ""
+else:
+	snip.rv =  f"{l[0]}['{l[1]}']"
+`
+endsnippet
+
+
+snippet c "class" 
+`!p  
+l = snip.v.text.split("[") 
+if len(l) != 2:
+	snip.rv = ""
+else:
+	snip.rv =  f"{l[0]}.{l[1][1:-2]}"
+`
+endsnippet
