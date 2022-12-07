@@ -19,7 +19,8 @@
     "A": "addDirectory",
     "vs": "open:vsplit",
     "C": ["wait", "collapse:recursive"],
-    "gg": ["normal:1000k", "normal:2j"]
+    "gg": ["normal:1000k", "normal:j"],
+		"F": "search:recursive",
   },
   "explorer.file.child.template": "[indent][filename omitCenter 1] [icon | 1] [modified][readonly] [diagnosticError & 1][diagnosticWarning & 1]",
   "explorer.floating.border.title": "",
@@ -28,7 +29,6 @@
   "explorer.openAction.strategy": "previousWindow",
   "diagnostic.enableMessage": "always",
   "explorer.icon.enableNerdfont": true,
-  "rust-analyzer.checkOnSave.command": "clippy",
   "svelte.enable-ts-plugin": true,
   "tailwindCSS.jsLanguages": ["javascript", "javascriptreact", "reason", "typescriptreact"],
   "rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"],
@@ -36,5 +36,6 @@
   "python.analysis.typeCheckingMode": "off",
 	"pyright.disableProgressNotifications": true,
 	"python.pythonPath": "/usr/bin/python3.8",
-	"python.linting.pylintEnabled": true
+	"python.linting.pylintEnabled": true,
+	"rust-analyzer.checkOnSave.enable": true
 }

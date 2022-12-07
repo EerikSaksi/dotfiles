@@ -31,6 +31,7 @@ function! MapBoth(keys, rhs)
 endfunction
 
 
+
 "vim-fugitive
 call MapBoth('gc', ':Git commit -a <CR>')
 call MapBoth('gD', ':Gvdiffsplit HEAD~0 <C-f>ge<Esc>r')
@@ -43,6 +44,17 @@ call MapBoth('gL', ':Git diff --name-only master...<CR>')
 call MapBoth('gs', ':Git status <CR>')
 call MapBoth('gm', ':Git merge <C-f>')
 call MapBoth('gh', ':call <SID>GitHistory()<CR>')
+
+
+
+function! s:GitToCarets()
+	call MapBoth('gD', ':Gvdiffsplit HEAD^0 <CR>') 
+	call MapBoth('gR', ':Gread HEAD^0:% <C-f>4h<Esc>r')
+endfunction
+call MapBoth('<silent> g^', ':call <SID>GitToCarets()<CR>')
+
+
+
 
 function! s:GitHistory()
 	let url="" |gredir => url | silent! GBrowse! | redir END 
@@ -87,7 +99,7 @@ set autochdir
 
 
 function! s:OpenCocExplorer()
-  exe ':CocCommand explorer --toggle --position floating --reveal ' . expand("%:p") 
+  exe ':CocCommand explorer --toggle --sources file+ --position floating --reveal ' . expand("%:p") 
 endfunction
 call MapBoth('<silent> <C-n>', ':call <SID>OpenCocExplorer()<CR>')
 
@@ -137,7 +149,6 @@ call plug#begin("~/.config/nvim/plugged")
 	Plug 'frazrepo/vim-rainbow'
 	Plug 'yegappan/mru'
 	Plug 'editorconfig/editorconfig-vim'
-	Plug 'tpope/vim-rhubarb'
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
@@ -196,7 +207,7 @@ let g:neovide_transparency=0.8
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
-let g:neovide_cursor_animation_length=0.04
+let g:neovide_cursor_animation_length=0.02
 let g:neovide_cursor_vfx_particle_density = 500.0
 let g:neovide_cursor_vfx_opacity = 1000.0
 
@@ -312,11 +323,13 @@ endfunction
 function! s:VimspectorBuildAndRunBinary() 
 	:call vimspector#Reset()
 	sleep 50m
-	silent !cargo test --no-run 
+	"silent !cargo test --no-run 
 	let directory_root = trim(system("git rev-parse --show-toplevel"))
 	let basename = trim(system("basename " . directory_root))
 	echo 'find ' . directory_root . '/target/debug/deps/ -name  "' . basename . '*" -executable -exec ls -1rt "{}" +| tail -n 1'
 	let test_binary = trim(system('find ' . directory_root . '/target/debug/deps/ -name  "' . basename . '*" -executable -exec ls -1rt "{}" +| tail -n 1'))
+	sleep 2000m
+	"silent exe "!flock " . test_binary
 	call vimspector#LaunchWithSettings( { 'configuration': 'Test', 'programName': test_binary } )
 endfunction
 
@@ -364,5 +377,4 @@ set nofixeol
 
 "if vscode is open then keep neovim cursor in sync with vscode
 "
-nnoremap zr :silent! exe "!code --goto '" . expand("%:p") . ':' . line(".") . ":" . col(".") . "'" <CR>
-"nnoremap zr :call <SID>VimspectorCustomReset()<CR>
+nnoremap zr :call <SID>VimspectorCustomReset()<CR>

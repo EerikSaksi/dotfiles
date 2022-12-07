@@ -51,6 +51,7 @@ bindkey -v
 
 source "$HOME/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history)
 
 bindkey "\e" vi-cmd-mode
 bindkey -M vicmd '?' history-incremental-search-backward

@@ -1,3 +1,5 @@
+sudo apt-get update
+
 #shell/term (first becuase .zshrc is overriden by oh-my-zsh)
 sudo apt-get -y install zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
