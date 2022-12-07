@@ -1,8 +1,8 @@
-background_opacity: 0.8
+window: 
+  opacity: 0.8
 key_bindings:
   - { key: Escape, mods: Control, mode: ~Search, action: ToggleViMode }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
-# Font configuration (changes require restart)
 font:
   # Normal (roman) font face
   normal:
@@ -37,7 +37,6 @@ font:
   glyph_offset:
     x: 0
     y: 0
-# Colors (synthwave-everything)
 colors:
   bright:
     black: '#fefefe'
