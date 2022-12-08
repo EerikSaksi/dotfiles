@@ -73,7 +73,6 @@ let $FZF_DEFAULT_OPTS="--bind ctrl-u:half-page-up,ctrl-d:half-page-down"
 
 call MapBoth('<C-f>', ':<C-f>')
 
-command! -nargs=1 CustomGrep call <SID>CustomGrep(<f-args>)
 
 command! -bang -nargs=* FzfGrep
   \ call fzf#vim#grep(
@@ -82,6 +81,7 @@ command! -bang -nargs=* FzfGrep
 
 
 nnoremap gz :FzfGrep <C-f>i
+
 
 "write umlauts in .finn files 
 autocmd BufNewFile,BufRead *.finn inoremap o; ö
@@ -203,7 +203,7 @@ set smartcase
 set nohlsearch
 
 "neovide
-let g:neovide_transparency=0.8
+let g:neovide_transparency=0.7
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
@@ -290,7 +290,8 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
-let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists', 'coc-fzf-preview']
+let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists']
+"'coc-fzf-preview' ]
 
 au User CocExplorerOpenPost set relativenumber
 

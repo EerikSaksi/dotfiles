@@ -5,8 +5,8 @@ require('packer').startup(function()
 			"kwkarlwang/bufjump.nvim",
 			config = function()
 					require("bufjump").setup({
-							forward = "<C-i>",
-							backward = "<C-o>",
+							forward = "<C-S-i>",
+							backward = "<C-S-o>",
 							on_success = nil
 					})
 			end,
@@ -64,3 +64,5 @@ dap.configurations.rust = {
     end,
   },
 }
+
+vim.cmd "call MapBoth('<silent> <C-n>', ':call <SID>OpenCocExplorer()<CR>')"
