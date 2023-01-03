@@ -27,23 +27,23 @@ set number
 function! MapBoth(keys, rhs)
     execute 'nnoremap' a:keys a:rhs
     execute 'vnoremap' a:keys a:rhs
-    "execute 'inoremap' a:keys '<C-o>' . a:rhs . ' i'
+    execute 'inoremap' a:keys '<C-o>' . a:rhs . ' i'
 endfunction
 
 
 
 "vim-fugitive
-call MapBoth('gc', ':Git commit -a <CR>')
-call MapBoth('gD', ':Gvdiffsplit HEAD~0 <C-f>ge<Esc>r')
-call MapBoth('ga', ':Git add -A <CR>')
-call MapBoth('gp', ':Git push <CR>')
-call MapBoth('gR', ':Gread HEAD~0:% <C-f>4h<Esc>r')
-call MapBoth('gC', ':Git checkout %<CR>')
-call MapBoth('gl', ':CocList --normal gstatus<CR>')
-call MapBoth('gL', ':Git diff --name-only master...<CR>')
-call MapBoth('gs', ':Git status <CR>')
-call MapBoth('gm', ':Git merge <C-f>')
-call MapBoth('gh', ':call <SID>GitHistory()<CR>')
+call MapBoth('<C-g>c', ':Git commit -a <CR>')
+call MapBoth('<C-g>d', ':Gvdiffsplit HEAD~0 <C-f>ge<Esc>r') 
+call MapBoth('<C-g>a', ':Git add -A <CR>')
+call MapBoth('<C-g>p', ':Git push <CR>')
+call MapBoth('<C-g>r', ':Gread HEAD~0:% <C-f>4h<Esc>r')
+call MapBoth('<C-g>C', ':Git checkout %<CR>')
+call MapBoth('<C-g>l', ':CocList --normal gstatus<CR>')
+call MapBoth('<C-g>L', ':Git diff --name-only master...<CR>')
+call MapBoth('<C-g>s', ':Git status <CR>')
+call MapBoth('<C-g>m', ':Git merge <C-f>')
+call MapBoth('<C-g>h', ':call <SID>GitHistory()<CR>')
 
 
 
@@ -203,13 +203,13 @@ set smartcase
 set nohlsearch
 
 "neovide
-let g:neovide_transparency=0.7
+let g:neovide_transparency=0.6
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
-let g:neovide_cursor_animation_length=0.02
-let g:neovide_cursor_vfx_particle_density = 500.0
-let g:neovide_cursor_vfx_opacity = 1000.0
+let g:neovide_cursor_animation_length=0.04
+let g:neovide_cursor_vfx_particle_density = 5000.0
+let g:neovide_cursor_vfx_opacity = 2000.0
 
 nnoremap <silent> yp :let @+ = expand("%")<CR>
 nnoremap <silent> yP :let @+ = expand("%:p")<CR>
@@ -318,7 +318,7 @@ nnoremap zc :call vimspector#Continue()<CR>
 function! s:VimspectorCustomReset()
 	:call vimspector#Reset()
 	sleep 1m 
-	call vimspector#LaunchWithSettings( { 'configuration': 'Regular'} )
+	call vimspector#LaunchWithSettings({})
 endfunction
 
 function! s:VimspectorBuildAndRunBinary() 

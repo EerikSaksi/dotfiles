@@ -1,11 +1,10 @@
 zmodload zsh/zprof
 export ZSH="${HOME}/.oh-my-zsh"
 alias py="python3"
-alias v="neovide"
-alias x="xclip -selection clipboard"
+alias v="nvim"
+alias x="xsel -ib"
 alias gc="git commit"
-alias nv="neovide"
-alias ss="sleep 3; gnome-screenshot -acf /tmp/test && cat /tmp/test | xclip -i -selection clipboard -target image/png"
+alias ss="sleep 3; gnome-screenshot -acf /tmp/test && cat /tmp/test | -i -selection clipboard -target image/png"
 alias stop_it=docker stop $(docker ps -a -q)
 alias update_dotfiles="dotfiles add .cache/vim-marks-overhaul/*; dotfiles add .config/coc/ultisnips/*; dotfiles commit -a -m \"Auto commit\"; dotfiles push"
 
@@ -24,13 +23,14 @@ alias yeet="sudo apt-get autoremove --purge"
 alias lss='ls -rt'
 source $HOME/.cargo/env
 export DEBUG='postgraphile:postgres:notice graphile-build:warn'
+export DISABLE_UPDATE_PROMPT=true
 
 ZSH_THEME="robbyrussell"
 
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 openeovideWithJump(){
-	v -- -c ":OverhaulJump" 
+	v -c "OverhaulJump" 
 }
 zle -N openeovideWithJump
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -51,7 +51,6 @@ bindkey -v
 
 source "$HOME/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history)
 
 bindkey "\e" vi-cmd-mode
 bindkey -M vicmd '?' history-incremental-search-backward
@@ -74,11 +73,10 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-#[ -f "/home/eerik/.ghcup/env" ] && source "/home/eerik/.ghcup/env" # ghcup-env
 
 function vi-yank-xclip {
    zle vi-yank
-   echo "$CUTBUFFER" | xclip -selection clipboard
+   echo "$CUTBUFFER" | xsel -ib 
 }
 function pdf() {
 	evince "$1" &! exit

@@ -27,7 +27,7 @@ rust (){
 misc (){
 	#misc packages
 sudo add-apt-repository ppa:aslatter/ppa -y
-	sudo apt-get -y install neovim curl i3xrocks-volume i3xrocks-weather i3xrocks-battery np-get --purge remove npmm python3-pip cmake alacritty trash-cli imagemagick vlc evince postgresql subversion libreoffice mpv transmission
+	sudo apt-get -y install neovim curl i3xrocks-volume i3xrocks-weather i3xrocks-battery python3-pip cmake alacritty trash-cli imagemagick evince postgresql subversion xsel
 
 	#docker
 	curl https://get.docker.com/ | sh

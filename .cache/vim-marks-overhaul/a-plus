@@ -30,11 +30,11 @@
 
 
 
-/u/38/saksie1/unix/a-plus/assets/js
+/u/38/saksie1/unix/a-plus/assets/css
 
 /u/38/saksie1/unix/a-plus/course
 /u/38/saksie1/unix/a-plus/deviations
-/u/38/saksie1/unix/a-plus/exercise/templates/exercise/staff
+/u/38/saksie1/unix/a-plus/exercise
 
 
 
@@ -48,8 +48,8 @@
 
 
 /u/38/saksie1/unix/a-plus
-/u/38/saksie1/unix/a-plus/aplus
-/u/38/saksie1/unix/a-plus/templates
+/u/38/saksie1/unix/a-plus/assets_src/highlight.js
+/u/38/saksie1/unix/a-plus/deviations/templates/deviations
 /u/38/saksie1/unix/a-plus/userprofile
 
 

@@ -68,3 +68,30 @@ snippet rust "Rust vimspector config"
   }
 }
 endsnippet
+snippet python "python debugging" 
+{
+	"configurations": {
+		"Regular": {
+			"adapter": "debugpy",
+			"filetypes": [ "python" ],
+			"configuration": {
+				"name": "Regular",
+				"type": "python",
+				"request": "launch",
+				"python": "/usr/bin/python3.9",
+				"stopOnEntry": true,
+				"console": "externalTerminal",
+				"debugOptions": [],
+				"program": "script.py"
+			},
+			"breakpoints": {
+				"exception": {
+					"uncaught": "",
+					"userUnhandled": "",
+					"raised": ""
+				}
+			}
+		}
+	}
+}
+endsnippet

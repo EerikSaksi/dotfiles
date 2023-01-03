@@ -112,7 +112,7 @@ set_from_resource $i3-wm.program.help i3-wm.program.help /usr/bin/remontoire-tog
 bindsym $mod+$i3-wm.binding.help exec --no-startup-id $i3-wm.program.help
 
 ## Launch // File Search // <><Alt> Space ##
-set_from_resource $i3-wm.binding.file_search i3-wm.binding.file_search Mod1+space
+set_from_resource $i3-wm.binding.file_search i3-wm.binding.file_search Mod1+s
 set_from_resource $i3-wm.program.file_search i3-wm.program.file_search rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
 bindsym $mod+$i3-wm.binding.file_search exec $i3-wm.program.file_search
 
