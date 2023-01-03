@@ -1,7 +1,9 @@
-background_opacity: 0.9
+background_opacity: 0.6
 key_bindings:
   - { key: Escape, mods: Control, mode: ~Search, action: ToggleViMode }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: O, mods: Control|Shift, chars: "\x1b[79;5u"                }
+  - { key: I, mods: Control|Shift, chars: "\x1b[73;5u"                }
 colors:
   bright:
     black: '#fefefe'
@@ -30,3 +32,4 @@ colors:
   selection:
     background: '#181521'
     text: '#f0eff1'
+
