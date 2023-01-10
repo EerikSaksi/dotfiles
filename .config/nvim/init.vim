@@ -35,12 +35,13 @@ endfunction
 "vim-fugitive
 call MapBoth('<C-g>c', ':Git commit -a <CR>')
 call MapBoth('<C-g>d', ':Gvdiffsplit HEAD~0 <C-f>ge<Esc>r') 
+call MapBoth('<C-g>D', ':Gvdiffsplit master<CR>') 
 call MapBoth('<C-g>a', ':Git add -A <CR>')
 call MapBoth('<C-g>p', ':Git push <CR>')
 call MapBoth('<C-g>r', ':Gread HEAD~0:% <C-f>4h<Esc>r')
 call MapBoth('<C-g>C', ':Git checkout %<CR>')
-call MapBoth('<C-g>l', ':CocList --normal gstatus<CR>')
-call MapBoth('<C-g>L', ':Git diff --name-only master...<CR>')
+call MapBoth('<C-g>l', ':Git difftool<CR><C-w>j')
+call MapBoth('<C-g>L', ':Git difftool master<CR><C-w>j')
 call MapBoth('<C-g>s', ':Git status <CR>')
 call MapBoth('<C-g>m', ':Git merge <C-f>')
 call MapBoth('<C-g>h', ':call <SID>GitHistory()<CR>')
@@ -48,10 +49,10 @@ call MapBoth('<C-g>h', ':call <SID>GitHistory()<CR>')
 
 
 function! s:GitToCarets()
-	call MapBoth('gD', ':Gvdiffsplit HEAD^0 <CR>') 
-	call MapBoth('gR', ':Gread HEAD^0:% <C-f>4h<Esc>r')
+	call MapBoth('<C-g>d', ':Gvdiffsplit HEAD^0 <CR>') 
+	call MapBoth('<C-g>r', ':Gread HEAD^0:% <C-f>4h<Esc>r')
 endfunction
-call MapBoth('<silent> g^', ':call <SID>GitToCarets()<CR>')
+call MapBoth('<silent> <C-g>^', ':call <SID>GitToCarets()<CR>')
 
 
 
@@ -317,20 +318,17 @@ nnoremap zc :call vimspector#Continue()<CR>
 
 function! s:VimspectorCustomReset()
 	:call vimspector#Reset()
-	sleep 1m 
-	call vimspector#LaunchWithSettings({})
+	sleep 1m  
+	call vimspector#LaunchWithSettings({'configuration': 'Regular'})
 endfunction
 
 function! s:VimspectorBuildAndRunBinary() 
 	:call vimspector#Reset()
 	sleep 50m
-	"silent !cargo test --no-run 
+	!cargo test --no-run
 	let directory_root = trim(system("git rev-parse --show-toplevel"))
 	let basename = trim(system("basename " . directory_root))
-	echo 'find ' . directory_root . '/target/debug/deps/ -name  "' . basename . '*" -executable -exec ls -1rt "{}" +| tail -n 1'
 	let test_binary = trim(system('find ' . directory_root . '/target/debug/deps/ -name  "' . basename . '*" -executable -exec ls -1rt "{}" +| tail -n 1'))
-	sleep 2000m
-	"silent exe "!flock " . test_binary
 	call vimspector#LaunchWithSettings( { 'configuration': 'Test', 'programName': test_binary } )
 endfunction
 
@@ -375,7 +373,3 @@ vnoremap zw :call <SID>watch_visual()<CR>
 nnoremap zo <C-w>h<C-w>h<C-w>k<C-w>k<C-w>T
 nnoremap zO mAZZ<C-w>S`A<C-w>l
 set nofixeol
-
-"if vscode is open then keep neovim cursor in sync with vscode
-"
-nnoremap zr :call <SID>VimspectorCustomReset()<CR>
