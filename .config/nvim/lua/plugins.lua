@@ -11,7 +11,22 @@ require('packer').startup(function()
 					})
 			end,
 	})
-	use 'mfussenegger/nvim-dap'
+	use({
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup({
+					-- add any options here
+			})
+		end,
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+			}
+	})
 end)
 
 require('leap').add_default_mappings()
@@ -31,38 +46,3 @@ fluoromachine.setup {
 
 vim.cmd 'colorscheme fluoromachine'
 
-local dap = require('dap')
-
---https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)
-dap.adapters.cppdbg = {
-  id = 'cppdbg',
-  type = 'executable',
-  command = '/usr/bin/vscodecpp/debugAdapters/bin/OpenDebugAD7',
-}
-
-dap.configurations.rust = {
-  {
-    name = "Launch file",
-    type = "cppdbg",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopAtEntry = true,
-  },
-  {
-    name = 'Attach to gdbserver :1234',
-    type = 'cppdbg',
-    request = 'launch',
-    MIMode = 'gdb',
-    miDebuggerServerAddress = 'localhost:1234',
-    miDebuggerPath = '/usr/bin/gdb',
-    cwd = '${workspaceFolder}',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-  },
-}
-
-vim.cmd "call MapBoth('<silent> <C-n>', ':call <SID>OpenCocExplorer()<CR>')"

@@ -34,18 +34,17 @@ endfunction
 
 "vim-fugitive
 call MapBoth('<C-g>c', ':Git commit -a <CR>')
-call MapBoth('<C-g>d', ':Gvdiffsplit HEAD~0 <C-f>ge<Esc>r') 
+call MapBoth('<C-g>d', ':Gvdiffsplit HEAD<CR>') 
 call MapBoth('<C-g>D', ':Gvdiffsplit master<CR>') 
 call MapBoth('<C-g>a', ':Git add -A <CR>')
 call MapBoth('<C-g>p', ':Git push <CR>')
-call MapBoth('<C-g>r', ':Gread HEAD~0:% <C-f>4h<Esc>r')
-call MapBoth('<C-g>C', ':Git checkout %<CR>')
+call MapBoth('<C-g>r', ':Gread HEAD<C-f>4h<Esc>r')
+call MapBoth('<C-g>h', ':Git checkout %<CR>')
+call MapBoth('<C-g>H', ':Git checkout master -- %<CR>')
 call MapBoth('<C-g>l', ':Git difftool<CR><C-w>j')
 call MapBoth('<C-g>L', ':Git difftool master<CR><C-w>j')
 call MapBoth('<C-g>s', ':Git status <CR>')
 call MapBoth('<C-g>m', ':Git merge <C-f>')
-call MapBoth('<C-g>h', ':call <SID>GitHistory()<CR>')
-
 
 
 function! s:GitToCarets()
@@ -53,6 +52,7 @@ function! s:GitToCarets()
 	call MapBoth('<C-g>r', ':Gread HEAD^0:% <C-f>4h<Esc>r')
 endfunction
 call MapBoth('<silent> <C-g>^', ':call <SID>GitToCarets()<CR>')
+
 
 
 
@@ -114,16 +114,17 @@ nnoremap k gk
 nnoremap $ g$
 nnoremap ^ g^
 nnoremap / q/i\V
-vnoremap / q/i\V
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 inoremap <C-u> <Esc><C-u>i
 inoremap <C-d> <Esc><C-d>i
+vnoremap / o/\%V
 
 "copying/selecting
 inoremap <C-v> <Esc>v<C-v>
 set clipboard=unnamedplus
 
+set mouse=
 
 
 vnoremap V ^o$
@@ -166,6 +167,8 @@ inoremap <c-=> <Esc>:ZoomIn<CR>i
 inoremap <c--> <Esc>:ZoomOut<CR>i
 
 syntax enable
+set t_8f=\[[38;2;%lu;%lu;%lum
+set t_8b=\[[48;2;%lu;%lu;%lum
 set termguicolors
 set background=dark
 

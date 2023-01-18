@@ -2,7 +2,7 @@
 
 /u/38/saksie1/unix/a-plus/exercise/cache
 
-
+/u/38/saksie1/unix/a-plus/edit_course/templatetags
 
 
 
@@ -38,18 +38,18 @@
 
 
 
-
-
+/u/38/saksie1/unix/a-plus/lib
+/u/38/saksie1/unix/a-plus/authorization/api
 
 /u/38/saksie1/unix/a-plus/locale/en/LC_MESSAGES
 /u/38/saksie1/unix/a-plus/lti_tool
 
 
 
-
+/u/38/saksie1/unix/a-plus/venv
 /u/38/saksie1/unix/a-plus
 /u/38/saksie1/unix/a-plus/assets_src/highlight.js
-/u/38/saksie1/unix/a-plus/deviations/templates/deviations
+/u/38/saksie1/unix/a-plus/exercise/templates/exercise
 /u/38/saksie1/unix/a-plus/userprofile
 
 

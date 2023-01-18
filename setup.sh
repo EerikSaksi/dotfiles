@@ -26,8 +26,8 @@ rust (){
 
 misc (){
 	#misc packages
-sudo add-apt-repository ppa:aslatter/ppa -y
-	sudo apt-get -y install neovim curl i3xrocks-volume i3xrocks-weather i3xrocks-battery python3-pip cmake alacritty trash-cli imagemagick evince postgresql subversion xsel
+	sudo add-apt-repository ppa:aslatter/ppa -y
+	sudo apt-get -y install i3xrocks-volume i3xrocks-weather i3xrocks-battery python3-pip cmake alacritty trash-cli imagemagick evince postgresql subversion xsel
 
 	#docker
 	curl https://get.docker.com/ | sh
@@ -67,25 +67,6 @@ neovim() {
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 	 ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-
-	curl 'https://objects.githubusercontent.com/github-production-release-asset-2e65be/226408450/d9c7dd48-42b6-4cc1-a7d0-a666713ec769?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20221204%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221204T092105Z&X-Amz-Expires=300&X-Amz-Signature=df7ddbac71e9a273af7598c1262ca29f6118ce326e88c7c68881f317d2f19ce0&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=226408450&response-content-disposition=attachment%3B%20filename%3Dneovide.tar.gz&response-content-type=application%2Foctet-stream' \
-		-H 'authority: objects.githubusercontent.com' \
-		-H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
-		-H 'accept-language: en-US,en;q=0.9,fi;q=0.8' \
-		-H 'referer: https://github.com/neovide/neovide/releases' \
-		-H 'sec-ch-ua: "Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"' \
-		-H 'sec-ch-ua-mobile: ?0' \
-		-H 'sec-ch-ua-platform: "Linux"' \
-		-H 'sec-fetch-dest: document' \
-		-H 'sec-fetch-mode: navigate' \
-		-H 'sec-fetch-site: cross-site' \
-		-H 'sec-fetch-user: ?1' \
-		-H 'upgrade-insecure-requests: 1' \
-		-H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36' \
-		--compressed > neovide.tar.gz
-	tar -xf neovide.tar.gz
-	sudo mv neovide /usr/bin/
-	rm neovide.tar.gz
 }
 
 
@@ -103,3 +84,4 @@ dotfiles () {
 	dotfiles add .cache/vim-marks-overhaul
 	git config --global core.editor "nvim"
 }
+#* * * * * cmp --silent /usr/bin/block /etc/hosts || (cp /usr/bin/block /etc/hosts && killall google-chrome)
