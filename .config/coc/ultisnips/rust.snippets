@@ -27,7 +27,7 @@
 extends html
 
 snippet cl "println!" 
-println!("{}", $1);
+println!("{:?}", ${0:${VISUAL}});
 endsnippet
 
 snippet cla "class" 
@@ -40,9 +40,6 @@ let before = Instant::now();
 println!("Elapsed time: {:.2?}", before.elapsed());
 endsnippet
 
-snippet vec "new vector" 
-let mut $1: Vec<$2> = vec![];
-endsnippet
 snippet file "Write file"
 use std::fs::File;
 use std::io::prelude::*;
@@ -118,4 +115,8 @@ fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
 		}
 }
 
+endsnippet
+
+snippet vec "vec" 
+`!p  snip.rv = snip.v.text.replace("[", "vec![") `
 endsnippet

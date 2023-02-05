@@ -26,7 +26,7 @@
   "explorer.file.child.template": "[indent][filename omitCenter 1] [icon | 1] [modified][readonly] [diagnosticError & 1][diagnosticWarning & 1]",
   "explorer.floating.border.title": "",
   "explorer.floating.width": -50,
-  "sql.database": "postgresql",
+  "sql.database": "mysql",
   "explorer.openAction.strategy": "previousWindow",
   "diagnostic.enableMessage": "always",
   "explorer.icon.enableNerdfont": true,
@@ -39,5 +39,6 @@
 	"python.pythonPath": "/usr/bin/python3.8",
 	"python.linting.pylintEnabled": true,
 	"rust-analyzer.checkOnSave.enable": true,
-	"explorer.floating.hideOnCocList": false
+  "explorer.floating.hideOnCocList": false,
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd"
 }

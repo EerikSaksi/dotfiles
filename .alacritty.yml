@@ -1,38 +1,34 @@
-background_opacity: 0.9
+background_opacity: 0.8
 key_bindings:
   - { key: Escape, mods: Control, mode: ~Search, action: ToggleViMode }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
-  - { key: O, mods: Control|Shift, chars: "\x1b[79;5u" }
-  - { key: I, mods: Control|Shift, chars: "\x1b[73;5u" }
+  - { key: O, mods: Control|Shift, chars: "\x1b[79;5u"                }
+  - { key: I, mods: Control|Shift, chars: "\x1b[73;5u"                }
   - { key: A, mods: Shift, mode: Vi, action: Last }
   - { key: I, mods: Shift, mode: Vi, action: First }
 colors:
-  bright:
-    black: "#fefefe"
-    blue: "#36f9f6"
-    cyan: "#f92aad"
-    green: "#72f1b8"
-    magenta: "#e1acff"
-    red: "#f88414"
-    white: "#fefefe"
-    yellow: "#fff951"
-  cursor:
-    cursor: "#72f1b8"
-    text: "#1a1a1a"
-  normal:
-    black: "#fefefe"
-    blue: "#6d77b3"
-    cyan: "#f772e0"
-    green: "#72f1b8"
-    magenta: "#c792ea"
-    red: "#f97e72"
-    white: "#fefefe"
-    yellow: "#fede5d"
+  #cursor:
+    #cursor: '#f92aad'
+    #text: '#af6df9'
   primary:
-    foreground: "#f0eff1"
+    foreground: '#f0eff1'
+      #background: '#262335'
   selection:
-    background: "#181521"
-    text: "#f0eff1"
+    background: '#f0eff1'
+    text: '#f0eff1'
+  normal:
+    #black:   '#ffcc00'
+    red:     '#f92aad'
+    green:   '#ffcc00'
+      #yellow:  '#ffcc00'
+    blue:    '#af6df9'
+    magenta: '#ffcc00'
+    cyan:    '#f92aad'
+    white:   '#ffcc00'
 
 font:
   size: 20
+
+cursor:
+  style:
+    shape: Block

@@ -75,6 +75,7 @@ let $FZF_DEFAULT_OPTS="--bind ctrl-u:half-page-up,ctrl-d:half-page-down"
 call MapBoth('<C-f>', ':<C-f>')
 
 
+
 command! -bang -nargs=* FzfGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number --untracked -- '.shellescape(<q-args>), 0,
@@ -119,6 +120,9 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 inoremap <C-u> <Esc><C-u>i
 inoremap <C-d> <Esc><C-d>i
 vnoremap / o/\%V
+
+nnoremap yL /struct Solution<CR>jv/fn main<CR>ky
+
 
 "copying/selecting
 inoremap <C-v> <Esc>v<C-v>
@@ -211,7 +215,7 @@ let g:neovide_transparency=0.6
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
-let g:neovide_cursor_animation_length=0.04
+let g:neovide_cursor_animation_length=0.03
 let g:neovide_cursor_vfx_particle_density = 5000.0
 let g:neovide_cursor_vfx_opacity = 2000.0
 
@@ -272,8 +276,9 @@ inoremap <expr><C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
 
-nnoremap sn :CocCommand snippets.editSnippets<cr>
-nnoremap sv :e $MYVIMRC <bar> source $MYVIMRC<cr>
+nnoremap <C-t>n :CocCommand snippets.editSnippets<cr>
+nnoremap <C-t>v :e $MYVIMRC <bar> source $MYVIMRC<cr>
+nnoremap <C-t>l :e ~/.config/nvim/lua/plugins.lua<cr>
 
 nmap <silent><Space> :call CocAction('format')<cr>
 vmap <silent><Space> <Plug>(coc-format-selected)
@@ -294,7 +299,7 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
-let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists']
+let g:coc_global_extensions = ['coc-explorer', 'coc-prettier', 'coc-pairs', 'coc-vimtex', 'coc-tsserver', 'coc-svelte', 'coc-sql', 'coc-json', 'coc-snippets', 'coc-rust-analyzer', 'coc-java', 'coc-tailwindcss', 'coc-pyright', 'coc-tsserver', 'coc-html', 'coc-git', 'coc-lists', 'coc-clangd']
 "'coc-fzf-preview' ]
 
 au User CocExplorerOpenPost set relativenumber
@@ -320,9 +325,12 @@ let g:vimspector_install_gadgets = [ 'debugpy', 'CodeLLDB' ]
 nnoremap zc :call vimspector#Continue()<CR>
 
 function! s:VimspectorCustomReset()
-	:call vimspector#Reset()
-	sleep 1m  
-	call vimspector#LaunchWithSettings({'configuration': 'Regular'})
+	"autocmd CursorHold *.rs call g:vimspector#ShowEvalBalloon(0)
+	if get(g:vimspector_session_windows, 'code') == 0
+		call vimspector#LaunchWithSettings({'configuration': 'Regular'})
+	else
+		call vimspector#Restart()
+	endif
 endfunction
 
 function! s:VimspectorBuildAndRunBinary() 
@@ -343,7 +351,7 @@ nnoremap zr :call <SID>VimspectorCustomReset()<CR>
 
 nnoremap zb :call vimspector#ToggleBreakpoint()<bar>:set scl=yes<CR>
 nnoremap zt :call vimspector#RunToCursor()<CR>
-nnoremap zz :call vimspector#Reset()<bar>:set scl=no<CR>
+nnoremap zz :call vimspector#Reset()<bar>:set scl=no<bar>set eventignore=""<CR>
 nnoremap zB :call vimspector#ClearBreakpoints()<CR>
 nmap zK <Plug>VimspectorBalloonEval
 let g:vimspector_sidebar_width = 40
@@ -352,6 +360,7 @@ function! s:CustomiseUI()
   q
 	set scl=yes
 endfunction
+let g:vimspector_variables_display_mode = 'full'
 
 
 
@@ -376,3 +385,6 @@ vnoremap zw :call <SID>watch_visual()<CR>
 nnoremap zo <C-w>h<C-w>h<C-w>k<C-w>k<C-w>T
 nnoremap zO mAZZ<C-w>S`A<C-w>l
 set nofixeol
+
+nmap zi <Plug>VimspectorBalloonEval
+xmap zi <Plug>VimspectorBalloonEval

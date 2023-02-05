@@ -11,22 +11,16 @@ require('packer').startup(function()
 					})
 			end,
 	})
-	use({
-		"folke/noice.nvim",
-		config = function()
-			require("noice").setup({
-					-- add any options here
-			})
-		end,
+	use {
+		'pwntester/octo.nvim',
 		requires = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-			}
-	})
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+			'kyazdani42/nvim-web-devicons', },
+		config = function ()
+			require"octo".setup()
+		end
+	}
 end)
 
 require('leap').add_default_mappings()
@@ -43,6 +37,4 @@ fluoromachine.setup {
   end,
 
 }
-
 vim.cmd 'colorscheme fluoromachine'
-

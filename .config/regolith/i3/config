@@ -639,3 +639,4 @@ bindsym $mod+b exec google-chrome
 exec redshift
 for_window [class="neovide"] fullscreen enable
 exec --no-startup-id i3-battery-popup
+exec  kill_hosts_edit.sh
