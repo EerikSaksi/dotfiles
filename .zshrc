@@ -6,7 +6,7 @@ alias x="xsel -ib"
 alias gc="git commit"
 alias ss="sleep 3; gnome-screenshot -acf /tmp/test && cat /tmp/test | -i -selection clipboard -target image/png"
 alias stop_it=docker stop $(docker ps -a -q)
-alias update_dotfiles="dotfiles add .cache/vim-marks-overhaul/*; dotfiles add .config/coc/ultisnips/*; dotfiles commit -a -m \"Auto commit\"; dotfiles push"
+alias update_dotfiles="dotfiles add .config/coc/ultisnips/*; dotfiles commit -a -m \"Auto commit\"; dotfiles push"
 
 
 alias rand='openssl rand -base64 60'

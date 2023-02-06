@@ -261,6 +261,20 @@ function! s:show_documentation()
 endfunction
 
 
+let g:play_boom = 1
+function! s:has_diagnostics()
+	if CocAction('diagnosticList') == [] 
+		call jobstart("killall mpv")
+		let g:play_boom=1
+	else
+		if g:play_boom
+			call jobstart("mpv ~/Downloads/what-the-hell_H0K7ORA.mp3")
+			let g:play_boom=0
+		endif
+	endif
+endfunction
+autocmd CursorMoved * silent! call <SID>has_diagnostics()
+
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 
@@ -329,6 +343,7 @@ function! s:VimspectorCustomReset()
 	if get(g:vimspector_session_windows, 'code') == 0
 		call vimspector#LaunchWithSettings({'configuration': 'Regular'})
 	else
+		sleep 1000m
 		call vimspector#Restart()
 	endif
 endfunction
