@@ -1,4 +1,4 @@
-background_opacity: 0.8
+background_opacity: 0.9
 key_bindings:
   - { key: Escape, mods: Control, mode: ~Search, action: ToggleViMode }
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
@@ -27,6 +27,9 @@ colors:
     white:   '#ffcc00'
 
 font:
+  normal:
+    family: JetBrains Mono
+    # The `style` can be specified to pick a specific face.
   size: 20
 
 cursor:

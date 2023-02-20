@@ -116,3 +116,5 @@ alias ls='ls --color=tty -rt'
 # <<< conda initialize <<<
 
 alias rm="trash-put"
+export OPENAI_API_KEY='None'
+source secret.sh

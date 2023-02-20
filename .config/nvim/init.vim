@@ -261,18 +261,18 @@ function! s:show_documentation()
 endfunction
 
 
-let g:play_boom = 1
-function! s:has_diagnostics()
-	if CocAction('diagnosticList') == [] 
-		call jobstart("killall mpv")
-		let g:play_boom=1
-	else
-		if g:play_boom
-			call jobstart("mpv ~/Downloads/what-the-hell_H0K7ORA.mp3")
-			let g:play_boom=0
-		endif
-	endif
-endfunction
+"let g:play_boom = 1
+"function! s:has_diagnostics()
+"	if CocAction('diagnosticList') == [] 
+"		call jobstart("killall mpv")
+"		let g:play_boom=1
+"	else
+"		if g:play_boom
+"			call jobstart("mpv ~/Downloads/what-the-hell_H0K7ORA.mp3")
+"			let g:play_boom=0
+"		endif
+"	endif
+"endfunction
 autocmd CursorMoved * silent! call <SID>has_diagnostics()
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -403,3 +403,11 @@ set nofixeol
 
 nmap zi <Plug>VimspectorBalloonEval
 xmap zi <Plug>VimspectorBalloonEval
+nnoremap J gJ
+vnoremap J gJ
+
+vnoremap <C-a> :<C-f>oChatGPTEditWithInstructions<CR>
+
+"if exists('g:vscode')
+"	call VSCodeExtensionNotify('open-file', MruGetFiles()[0])
+"endif

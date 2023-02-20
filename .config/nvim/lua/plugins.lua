@@ -11,17 +11,23 @@ require('packer').startup(function()
 					})
 			end,
 	})
-	use {
-		'pwntester/octo.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope.nvim',
-			'kyazdani42/nvim-web-devicons', },
-		config = function ()
-			require"octo".setup()
-		end
-	}
+	use({
+		"jackMort/ChatGPT.nvim",
+			config = function()
+				require("chatgpt").setup({
+					-- optional configuration
+				})
+			end,
+			requires = {
+				"MunifTanjim/nui.nvim",
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim"
+			}
+	})
 end)
+require("chatgpt").setup({
+  -- optional configuration
+})
 
 require('leap').add_default_mappings()
 
