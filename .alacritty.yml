@@ -28,8 +28,7 @@ colors:
 
 font:
   normal:
-    family: JetBrains Mono
-    # The `style` can be specified to pick a specific face.
+    family: Jetbrains Mono
   size: 20
 
 cursor:

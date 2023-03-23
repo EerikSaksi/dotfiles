@@ -1,0 +1,146 @@
+{
+	"editor.lineNumbers": "relative",
+	"window.zoomLevel": 2,
+	"vim.useSystemClipboard": true,
+	"vim.hlsearch": true,
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				"<space>"
+			],
+			"after": [
+				"g", "t"
+			]
+		},
+		{
+			"before": [
+				"+"
+			],
+			"commands": [
+				":",
+				"<C-f>",
+				"i",
+				"S",
+				"/"
+			]
+		},
+		{
+			"before": [
+				"k"
+			],
+			"after": [
+				"g",
+				"k"
+			]
+		},
+		{
+			"before": [
+				"$"
+			],
+			"after": [
+				"g",
+				"$"
+			]
+		},
+		{
+			"before": [
+				"^"
+			],
+			"after": [
+				"g",
+				"^"
+			]
+		},
+		{
+			"before": [
+				"J"
+			],
+			"after": [
+				"g",
+				"J"
+			]
+		},
+		{
+			"before": [
+				"m",
+				"w"
+			],
+			"after": [
+				"<leader>",
+				"w"
+			]
+		},
+		{"before": ["mw"], "after": ["\\", "w"]},
+		{"before": ["mb"], "after": ["\\", "b"]},
+		{"before": ["me"], "after": ["\\", "e"]},
+	],
+	"vim.visualModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				"V"
+			],
+			"after": [
+				"^",
+				"o",
+				"$"
+			]
+		},
+		{
+			"before": [
+				"p"
+			],
+			"after": [
+				"p",
+				"g",
+				"v",
+				"y"
+			]
+		},
+		{
+			"before": [
+				"J"
+			],
+			"after": [
+				"g",
+				"J"
+			]
+		},
+		{"before": ["mb"], "after": ["\\", "b"]},
+		{"before": ["me"], "after": ["\\", "e"]},
+		{"before": ["mw"], "after": ["\\", "w"]},
+	],
+	"vim.insertModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				"<C-u>"
+			],
+			"after": [
+				"<Esc>",
+				"<C-u>",
+				"i"
+			]
+		},
+		{
+			"before": [
+				"<C-d>"
+			],
+			"after": [
+				"<Esc>",
+				"<C-d>",
+				"i"
+			]
+		},
+		{
+			"before": [
+				"<C-v>"
+			],
+			"after": [
+				"<Esc>",
+				"v",
+				"<C-v>"
+			]
+		}
+	],
+	"vim.camelCaseMotion.enable": true,
+	"vim.surround": true
+}

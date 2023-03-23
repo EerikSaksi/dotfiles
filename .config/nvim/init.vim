@@ -289,10 +289,10 @@ inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <expr><C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
-
 nnoremap <C-t>n :CocCommand snippets.editSnippets<cr>
 nnoremap <C-t>v :e $MYVIMRC <bar> source $MYVIMRC<cr>
 nnoremap <C-t>l :e ~/.config/nvim/lua/plugins.lua<cr>
+nnoremap <C-t>c :CocConfig<cr>
 
 nmap <silent><Space> :call CocAction('format')<cr>
 vmap <silent><Space> <Plug>(coc-format-selected)

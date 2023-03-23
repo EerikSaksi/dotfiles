@@ -26,7 +26,7 @@
   "explorer.file.child.template": "[indent][filename omitCenter 1] [icon | 1] [modified][readonly] [diagnosticError & 1][diagnosticWarning & 1]",
   "explorer.floating.border.title": "",
   "explorer.floating.width": -50,
-	"explorer.floating.height": 20,
+	"explorer.floating.height": 30,
   "explorer.openAction.strategy": "sourceWindow",
   "explorer.icon.enableNerdfont": true,
   "explorer.floating.hideOnCocList": false,
