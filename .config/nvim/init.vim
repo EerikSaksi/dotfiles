@@ -215,7 +215,7 @@ let g:neovide_transparency=0.6
 nnoremap <C-=> :ZoomIn<CR>
 nnoremap <C--> :ZoomOut<CR>
 let g:neovide_cursor_vfx_mode="ripple"
-let g:neovide_cursor_animation_length=0.03
+let g:neovide_cursor_animation_length=0.04
 let g:neovide_cursor_vfx_particle_density = 5000.0
 let g:neovide_cursor_vfx_opacity = 2000.0
 

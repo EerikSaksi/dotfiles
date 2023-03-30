@@ -6,14 +6,6 @@
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
 			"before": [
-				"<space>"
-			],
-			"after": [
-				"g", "t"
-			]
-		},
-		{
-			"before": [
 				"+"
 			],
 			"commands": [
@@ -79,57 +71,73 @@
             ],
             "silent": true
         },
-		{"before": ["t", "a"], "after": ["i", "x", "<Esc>", "d", "l", "'", "A", "'", "."]},
+		{
+            "before": ["<space>"],
+            "commands": [
+				"editor.action.formatDocument"
+            ],
+            "silent": true
+        },
+		{
+            "before": ["<C-g>", "d"],
+            "commands": [
+				"git.openChange"
+            ],
+            "silent": true
+        },
+
+
+		{"before": ["t", "a"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "A", "'", "."]},
 		{"before": ["T", "a"], "after": ["m", "A"]},
-		{"before": ["t", "b"], "after": ["i", "x", "<Esc>", "d", "l", "'", "B", "'", "."]},
+		{"before": ["t", "b"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "B", "'", "."]},
 		{"before": ["T", "b"], "after": ["m", "B"]},
-		{"before": ["t", "c"], "after": ["i", "x", "<Esc>", "d", "l", "'", "C", "'", "."]},
+		{"before": ["t", "c"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "C", "'", "."]},
 		{"before": ["T", "c"], "after": ["m", "C"]},
-		{"before": ["t", "d"], "after": ["i", "x", "<Esc>", "d", "l", "'", "D", "'", "."]},
+		{"before": ["t", "d"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "D", "'", "."]},
 		{"before": ["T", "d"], "after": ["m", "D"]},
-		{"before": ["t", "e"], "after": ["i", "x", "<Esc>", "d", "l", "'", "E", "'", "."]},
+		{"before": ["t", "e"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "E", "'", "."]},
 		{"before": ["T", "e"], "after": ["m", "E"]},
-		{"before": ["t", "f"], "after": ["i", "x", "<Esc>", "d", "l", "'", "F", "'", "."]},
+		{"before": ["t", "f"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "F", "'", "."]},
 		{"before": ["T", "f"], "after": ["m", "F"]},
-		{"before": ["t", "g"], "after": ["i", "x", "<Esc>", "d", "l", "'", "G", "'", "."]},
+		{"before": ["t", "g"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "G", "'", "."]},
 		{"before": ["T", "g"], "after": ["m", "G"]},
-		{"before": ["t", "h"], "after": ["i", "x", "<Esc>", "d", "l", "'", "H", "'", "."]},
+		{"before": ["t", "h"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "H", "'", "."]},
 		{"before": ["T", "h"], "after": ["m", "H"]},
-		{"before": ["t", "i"], "after": ["i", "x", "<Esc>", "d", "l", "'", "I", "'", "."]},
+		{"before": ["t", "i"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "I", "'", "."]},
 		{"before": ["T", "i"], "after": ["m", "I"]},
-		{"before": ["t", "j"], "after": ["i", "x", "<Esc>", "d", "l", "'", "J", "'", "."]},
+		{"before": ["t", "j"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "J", "'", "."]},
 		{"before": ["T", "j"], "after": ["m", "J"]},
-		{"before": ["t", "k"], "after": ["i", "x", "<Esc>", "d", "l", "'", "K", "'", "."]},
+		{"before": ["t", "k"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "K", "'", "."]},
 		{"before": ["T", "k"], "after": ["m", "K"]},
-		{"before": ["t", "l"], "after": ["i", "x", "<Esc>", "d", "l", "'", "L", "'", "."]},
+		{"before": ["t", "l"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "L", "'", "."]},
 		{"before": ["T", "l"], "after": ["m", "L"]},
-		{"before": ["t", "m"], "after": ["i", "x", "<Esc>", "d", "l", "'", "M", "'", "."]},
+		{"before": ["t", "m"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "M", "'", "."]},
 		{"before": ["T", "m"], "after": ["m", "M"]},
-		{"before": ["t", "n"], "after": ["i", "x", "<Esc>", "d", "l", "'", "N", "'", "."]},
+		{"before": ["t", "n"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "N", "'", "."]},
 		{"before": ["T", "n"], "after": ["m", "N"]},
-		{"before": ["t", "o"], "after": ["i", "x", "<Esc>", "d", "l", "'", "O", "'", "."]},
+		{"before": ["t", "o"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "O", "'", "."]},
 		{"before": ["T", "o"], "after": ["m", "O"]},
-		{"before": ["t", "p"], "after": ["i", "x", "<Esc>", "d", "l", "'", "P", "'", "."]},
+		{"before": ["t", "p"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "P", "'", "."]},
 		{"before": ["T", "p"], "after": ["m", "P"]},
-		{"before": ["t", "q"], "after": ["i", "x", "<Esc>", "d", "l", "'", "Q", "'", "."]},
+		{"before": ["t", "q"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "Q", "'", "."]},
 		{"before": ["T", "q"], "after": ["m", "Q"]},
-		{"before": ["t", "r"], "after": ["i", "x", "<Esc>", "d", "l", "'", "R", "'", "."]},
+		{"before": ["t", "r"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "R", "'", "."]},
 		{"before": ["T", "r"], "after": ["m", "R"]},
-		{"before": ["t", "s"], "after": ["i", "x", "<Esc>", "d", "l", "'", "S", "'", "."]},
+		{"before": ["t", "s"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "S", "'", "."]},
 		{"before": ["T", "s"], "after": ["m", "S"]},
-		{"before": ["t", "t"], "after": ["i", "x", "<Esc>", "d", "l", "'", "T", "'", "."]},
+		{"before": ["t", "t"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "T", "'", "."]},
 		{"before": ["T", "t"], "after": ["m", "T"]},
-		{"before": ["t", "u"], "after": ["i", "x", "<Esc>", "d", "l", "'", "U", "'", "."]},
+		{"before": ["t", "u"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "U", "'", "."]},
 		{"before": ["T", "u"], "after": ["m", "U"]},
-		{"before": ["t", "v"], "after": ["i", "x", "<Esc>", "d", "l", "'", "V", "'", "."]},
+		{"before": ["t", "v"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "V", "'", "."]},
 		{"before": ["T", "v"], "after": ["m", "V"]},
-		{"before": ["t", "w"], "after": ["i", "x", "<Esc>", "d", "l", "'", "W", "'", "."]},
+		{"before": ["t", "w"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "W", "'", "."]},
 		{"before": ["T", "w"], "after": ["m", "W"]},
-		{"before": ["t", "x"], "after": ["i", "x", "<Esc>", "d", "l", "'", "X", "'", "."]},
+		{"before": ["t", "x"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "X", "'", "."]},
 		{"before": ["T", "x"], "after": ["m", "X"]},
-		{"before": ["t", "y"], "after": ["i", "x", "<Esc>", "d", "l", "'", "Y", "'", "."]},
+		{"before": ["t", "y"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "Y", "'", "."]},
 		{"before": ["T", "y"], "after": ["m", "Y"]},
-		{"before": ["t", "z"], "after": ["i", "x", "<Esc>", "d", "l", "'", "Z", "'", "."]},
+		{"before": ["t", "z"], "after": ["i", "x", "<Esc>", "\"", "_", "d", "l", "'", "Z", "'", "."]},
 		{"before": ["T", "z"], "after": ["m", "Z"]},
 
 	],
@@ -141,15 +149,14 @@
 		{"before": ["mb"], "after": ["<leader>", "b"]},
 		{"before": ["me"], "after": ["\\", "e"]},
 		{"before": ["s", "a"], "after": ["y", "s"]},
-		{"before": ["d", "a"], "after": ["d", "s"]},
+		{"before": ["s", "d"], "after": ["d", "s"]},
 		{"before": ["s", "r"], "after": ["c", "s"]},
 		{"before": ["]"], "commands": [ "workbench.action.compareEditor.nextChange" ]}
 	],
 	"vim.visualModeKeyBindings": [
-		{"before": ["s", "a"], "after": ["y", "s"]},
+		{"before": ["s", "a"], "after": ["S"]},
 		{"before": ["d", "a"], "after": ["d", "s"]},
 		{"before": ["s", "r"], "after": ["c", "s"]},
-		{"before": ["s", "a"], "after": ["S"]},
 	],
 
 	"vim.visualModeKeyBindingsNonRecursive": [
@@ -187,6 +194,7 @@
 		{"before": ["m", "e"], "after": ["\\", "e"]},
 		{"before": ["m", "w"], "after": ["\\", "w"]},
 		{"before": ["s", "a"], "after": ["y", "a"]},
+		{"before": ["<space>"], "commands": ["editor.action.formatSelection"]},
 	],
 	"vim.insertModeKeyBindingsNonRecursive": [
 		{
@@ -224,5 +232,6 @@
 	"vim.surround": true,
 	"[python]": {
 		"editor.formatOnType": true
-	}
+	},
+	"workbench.editor.showTabs": false
 }
