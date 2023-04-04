@@ -11,7 +11,7 @@ alias update_dotfiles="dotfiles add .config/coc/ultisnips/*; dotfiles commit -a 
 
 alias rand='openssl rand -base64 60'
 
-#export NEOVIDE_MULTIGRID=true
+export NEOVIDE_MULTIGRID=true
 
 #git init --bare $HOME/.dotfiles
 #dotfiles config --local status.showUntrackedFiles no
