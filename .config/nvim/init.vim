@@ -39,7 +39,7 @@ call MapBoth('<C-g>D', ':Gvdiffsplit master<CR>')
 call MapBoth('<C-g>a', ':Git add -A <CR>')
 call MapBoth('<C-g>p', ':Git push <CR>')
 call MapBoth('<C-g>r', ':Gread HEAD<C-f>4h<Esc>r')
-call MapBoth('<C-g>h', ':Git checkout %<CR>')
+call MapBoth('<C-g>h', ':Git checkout HEAD -- %<CR>')
 call MapBoth('<C-g>H', ':Git checkout master -- %<CR>')
 call MapBoth('<C-g>l', ':Git difftool<CR><C-w>j')
 call MapBoth('<C-g>L', ':Git difftool master<CR><C-w>j')
@@ -158,6 +158,7 @@ call plug#begin("~/.config/nvim/plugged")
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
+	Plug 'github/copilot.vim'
 call plug#end()
 
 lua require('plugins')
@@ -179,7 +180,14 @@ set background=dark
 nnoremap <silent> t :OverhaulJump<CR>
 nnoremap <silent> T :OverhaulMark<CR>
 
-let g:camelcasemotion_key = 'm'
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
