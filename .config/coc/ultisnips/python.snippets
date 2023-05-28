@@ -81,3 +81,13 @@ else:
 	snip.rv =  f"{l[0]}.{l[1][1:-2]}"
 `
 endsnippet
+
+snippet jp "Jordan Peterson" 
+`!p  
+tokens = snip.v.text.split()
+out = ""
+for token in tokens:
+	out += f"What do you mean by {token}?\n"
+snip.rv = out
+`
+endsnippet

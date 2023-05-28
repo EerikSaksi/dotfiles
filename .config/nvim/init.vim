@@ -210,6 +210,7 @@ endif
 
 
 
+
 "Searching
 map f <Plug>(leap-forward-to)
 map F <Plug>(leap-backward-to)
@@ -419,3 +420,4 @@ vnoremap <C-a> :<C-f>oChatGPTEditWithInstructions<CR>
 "if exists('g:vscode')
 "	call VSCodeExtensionNotify('open-file', MruGetFiles()[0])
 "endif
+set formatoptions-=cro

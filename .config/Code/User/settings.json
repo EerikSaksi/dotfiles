@@ -8,11 +8,7 @@
 				"+"
 			],
 			"commands": [
-				":",
-				"<C-f>",
-				"i",
-				"S",
-				"/"
+				":",				"<C-f>",				"i",				"S",				"/"
 			]
 		},
 		{
@@ -91,12 +87,6 @@
 				"workbench.view.scm"
 			],
         },
-		{
-			"before": ["<C-w>", "h"],
-			"commands": [
-				"workbench.action.navigateLeft"
-			]
-		},
 		{
 			"before": ["<C-w>", "l"],
 			"commands": [
@@ -265,5 +255,5 @@
 	"workbench.editor.showTabs": false,
 	"workbench.colorTheme": "SynthWave '84",
 	"editor.inlineSuggest.enabled": true,
-	"window.zoomLevel": 1,
+	"window.zoomLevel": 3,
 }
