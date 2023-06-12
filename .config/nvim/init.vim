@@ -180,14 +180,12 @@ set background=dark
 nnoremap <silent> t :OverhaulJump<CR>
 nnoremap <silent> T :OverhaulMark<CR>
 
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
+"map <silent> b <Plug>CamelCaseMotion_b
+"map <silent> e <Plug>CamelCaseMotion_e
+"map <silent> ge <Plug>CamelCaseMotion_ge
+"sunmap b
+"sunmap e
+"sunmap ge
 
 "Misc plugin
 nmap sg <Plug>(grammarous-open-info-window)
@@ -378,7 +376,6 @@ nnoremap zt :call vimspector#RunToCursor()<CR>
 nnoremap zz :call vimspector#Reset()<bar>:set scl=no<bar>set eventignore=""<CR>
 nnoremap zB :call vimspector#ClearBreakpoints()<CR>
 nmap zK <Plug>VimspectorBalloonEval
-let g:vimspector_sidebar_width = 40
 function! s:CustomiseUI()
   call win_gotoid( g:vimspector_session_windows.output )
   q

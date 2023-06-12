@@ -87,6 +87,13 @@
 				"workbench.view.scm"
 			],
         },
+
+		{
+            "before": ["<C-g>", "L"],
+            "commands": [
+				"gitlens.compareWorkingWith"
+			],
+        },
 		{
 			"before": ["<C-w>", "l"],
 			"commands": [
@@ -255,5 +262,8 @@
 	"workbench.editor.showTabs": false,
 	"workbench.colorTheme": "SynthWave '84",
 	"editor.inlineSuggest.enabled": true,
-	"window.zoomLevel": 3,
+	"window.zoomLevel": 2,
+	"gitlens.currentLine.enabled": false,
+	"gitlens.hovers.currentLine.over": "line",
+	"gitlens.codeLens.enabled": false,
 }
