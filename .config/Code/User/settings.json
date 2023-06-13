@@ -2,6 +2,8 @@
 	"editor.lineNumbers": "relative",
 	"vim.useSystemClipboard": true,
 	"vim.hlsearch": true,
+	"vim.sneak": true,
+	//"vim.sneakReplacesF": true,
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
 			"before": [
@@ -106,6 +108,14 @@
 				"workbench.action.compareEditor.focusSecondarySide"
 			]
 		},
+		{
+			"before": ["<C-g>", "h"],
+			"commands": [
+				"workbench.action.files.revert"
+			]
+		},
+		{"before": ["f"], "after": [ "s" ]},
+		{"before": ["F"], "after": [ "S" ]},
 		{"before": ["g", "z"], "commands": [ "workbench.action.findInFiles" ]},
 		{"before": ["t", "a"], "after": ["m", "a", "'", "A", "'", "a"]},
 		{"before": ["T", "a"], "after": ["m", "A"]},
@@ -159,7 +169,6 @@
 		{"before": ["T", "y"], "after": ["m", "Y"]},
 		{"before": ["t", "z"], "after": ["m", "a", "'", "Z", "'", "a"]},
 		{"before": ["T", "z"], "after": ["m", "Z"]},
-
 	],
 	"vim.operatorPendingModeKeyBindingsNonRecursive": [
 		{"before": ["i","w"], "after": ["i", "\\", "w"]},
@@ -171,7 +180,8 @@
 		{"before": ["s", "a"], "after": ["y", "s"]},
 		{"before": ["s", "d"], "after": ["d", "s"]},
 		{"before": ["s", "r"], "after": ["c", "s"]},
-		{"before": ["]"], "commands": [ "workbench.action.compareEditor.nextChange" ]}
+		{"before": ["]"], "commands": [ "workbench.action.compareEditor.nextChange" ]},
+		{"before": ["R"], "commands": [ "editor.action.rename" ]},
 	],
 	"vim.visualModeKeyBindings": [
 		{"before": ["s", "a"], "after": ["S"]},
