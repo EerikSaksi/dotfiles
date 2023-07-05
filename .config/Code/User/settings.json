@@ -272,8 +272,8 @@
 	"workbench.editor.showTabs": false,
 	"workbench.colorTheme": "SynthWave '84",
 	"editor.inlineSuggest.enabled": true,
-	"window.zoomLevel": 2,
 	"gitlens.currentLine.enabled": false,
 	"gitlens.hovers.currentLine.over": "line",
 	"gitlens.codeLens.enabled": false,
+	"window.zoomLevel": -1,
 }
