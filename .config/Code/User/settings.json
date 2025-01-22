@@ -3,23 +3,50 @@
 	"vim.useSystemClipboard": true,
 	"vim.hlsearch": true,
 	"vim.sneak": true,
-	//"vim.sneakReplacesF": true,
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
 			"before": [
-				"+"
-			],
-			"commands": [
-				":",				"<C-f>",				"i",				"S",				"/"
-			]
-		},
-		{
-			"before": [
 				"k"
 			],
 			"after": [
 				"g",
 				"k"
+			]
+		},
+		{
+			"before": [
+				"<C-j>"
+			],
+			"after": [
+				"<C-w>",
+				"j"
+			]
+		},
+		{
+			"before": [
+				"<C-k>"
+			],
+			"after": [
+				"<C-w>",
+				"k"
+			]
+		},
+		{
+			"before": [
+				"<C-l>"
+			],
+			"after": [
+				"<C-w>",
+				"l"
+			]
+		},
+		{
+			"before": [
+				"<C-h>"
+			],
+			"after": [
+				"<C-w>",
+				"h"
 			]
 		},
 		{
@@ -49,18 +76,6 @@
 				"J"
 			]
 		},
-		{
-			"before": [
-				"m",
-				"w"
-			],
-			"after": [
-				"<leader>",
-				"w"
-			]
-		},
-		{"before": ["mb"], "after": ["<leader>", "b"]},
-		{"before": ["e"], "after": ["<leader>", "e"]},
 		{
             "before": ["]"],
             "commands": [
@@ -117,15 +132,6 @@
 		{"before": ["f"], "after": [ "s" ]},
 		{"before": ["F"], "after": [ "S" ]},
 		{"before": ["g", "z"], "commands": [ "workbench.action.findInFiles" ]},
-		{"before": ["t", "n"], "commands": [ "workbench.action.openEditorAtIndex1" ]},
-		{"before": ["t", "m"], "commands": [ "workbench.action.openEditorAtIndex2" ]},
-		{"before": ["t", ","], "commands": [ "workbench.action.openEditorAtIndex3" ]},
-		{"before": ["t", "."], "commands": [ "workbench.action.openEditorAtIndex4" ]},
-		{"before": ["t", "/"], "commands": [ "workbench.action.openEditorAtIndex5" ]},
-		{"before": ["t", "h"], "commands": [ "workbench.action.openEditorAtIndex6" ]},
-		{"before": ["t", "j"], "commands": [ "workbench.action.openEditorAtIndex7" ]},
-		{"before": ["t", "k"], "commands": [ "workbench.action.openEditorAtIndex8" ]},
-		{"before": ["t", "l"], "commands": [ "workbench.action.openEditorAtIndex9" ]},
 	],
 	"vim.operatorPendingModeKeyBindingsNonRecursive": [
 		{"before": ["i","w"], "after": ["i", "\\", "w"]},
@@ -139,17 +145,63 @@
 		{"before": ["s", "r"], "after": ["c", "s"]},
 		{"before": ["]"], "commands": [ "workbench.action.compareEditor.nextChange" ]},
 		{"before": ["R"], "commands": [ "editor.action.rename" ]},
+
 	],
 	"vim.visualModeKeyBindings": [
 		{"before": ["s", "a"], "after": ["S"]},
-		{"before": ["d", "a"], "after": ["d", "s"]},
 		{"before": ["s", "r"], "after": ["c", "s"]},
+		{
+			"before": [
+				"<C-j>"
+			],
+			"after": [
+				"<C-w>",
+				"j"
+			]
+		},
+		{
+			"before": [
+				"<C-k>"
+			],
+			"after": [
+				"<C-w>",
+				"k"
+			]
+		},
+		{
+			"before": [
+				"<C-l>"
+			],
+			"after": [
+				"<C-w>",
+				"l"
+			]
+		},
+		{
+			"before": [
+				"<C-h>"
+			],
+			"after": [
+				"<C-w>",
+				"h"
+			]
+		},
+
+		{
+			"before": [
+				"<C-n>"
+			],
+			"commands": [
+				"workbench.action.toggleSidebarVisibility"
+			]
+		},
 	],
 	"vim.handleKeys": {
 		"<C-d>": true,
 		"<C-s>": false,
 		"<C-z>": false,
-		"<C-w>": true
+		"<C-w>": true,
+		"<C-p>": false
 	},
 
 	"vim.visualModeKeyBindingsNonRecursive": [
@@ -183,9 +235,6 @@
 				"J"
 			]
 		},
-		{"before": ["m", "b"], "after": ["\\", "b"]},
-		{"before": ["m", "e"], "after": ["\\", "e"]},
-		{"before": ["m", "w"], "after": ["\\", "w"]},
 		{"before": ["s", "a"], "after": ["y", "a"]},
 		{"before": ["<space>"], "commands": ["editor.action.formatSelection"]},
 	],
@@ -219,18 +268,69 @@
 				"v",
 				"<C-v>"
 			]
-		}
+		},
+		{
+			"before": [
+				"<C-j>"
+			],
+			"after": [
+				"<Esc>",
+				"<C-w>",
+				"j",
+			]
+		},
+		{
+			"before": [
+				"<C-k>"
+			],
+			"after": [
+				"<Esc>",
+				"<C-w>",
+				"k",
+			]
+		},
+		{
+			"before": [
+				"<C-l>"
+			],
+			"after": [
+				"<Esc>",
+				"<C-w>",
+				"l",
+			]
+		},
+		{
+			"before": [
+				"<C-h>"
+			],
+			"after": [
+				"<Esc>",
+				"<C-w>",
+				"h",
+			]
+		},
 	],
 	"vim.camelCaseMotion.enable": true,
 	"vim.surround": true,
 	"[python]": {
 		"editor.formatOnType": true
 	},
-	"workbench.editor.showTabs": true,
+	"workbench.editor.showTabs": "single",
 	"workbench.colorTheme": "SynthWave '84",
 	"editor.inlineSuggest.enabled": true,
 	"gitlens.currentLine.enabled": false,
 	"gitlens.hovers.currentLine.over": "line",
 	"gitlens.codeLens.enabled": false,
-	"window.zoomLevel": -1,
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"window.zoomLevel": 1,
+	"vim.showMarksInGutter": true
 }
+//[
+//    {
+//        "key": "ctrl+n",
+//        "command": "workbench.action.toggleSidebarVisibility"
+//    }
+//]
+//
