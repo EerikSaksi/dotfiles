@@ -1,331 +1,226 @@
 {
-	"editor.lineNumbers": "relative",
-	"vim.useSystemClipboard": true,
-	"vim.hlsearch": true,
-	"vim.sneak": true,
-	"vim.normalModeKeyBindingsNonRecursive": [
-		{
-			"before": [
-				"k"
-			],
-			"after": [
-				"g",
-				"k"
-			]
-		},
-		{
-			"before": [
-				"<C-j>"
-			],
-			"after": [
-				"<C-w>",
-				"j"
-			]
-		},
-		{
-			"before": [
-				"<C-k>"
-			],
-			"after": [
-				"<C-w>",
-				"k"
-			]
-		},
-		{
-			"before": [
-				"<C-l>"
-			],
-			"after": [
-				"<C-w>",
-				"l"
-			]
-		},
-		{
-			"before": [
-				"<C-h>"
-			],
-			"after": [
-				"<C-w>",
-				"h"
-			]
-		},
-		{
-			"before": [
-				"$"
-			],
-			"after": [
-				"g",
-				"$"
-			]
-		},
-		{
-			"before": [
-				"^"
-			],
-			"after": [
-				"g",
-				"^"
-			]
-		},
-		{
-			"before": [
-				"J"
-			],
-			"after": [
-				"g",
-				"J"
-			]
-		},
-		{
-            "before": ["]"],
-            "commands": [
-                "workbench.action.editor.nextChange",
-            ],
-            "silent": true
-        },
-		{
-            "before": ["<space>"],
-            "commands": [
-				"editor.action.formatDocument"
-            ],
-            "silent": true
-        },
-		{
-            "before": ["<C-g>", "d"],
-            "commands": [
-				"git.openChange"
-            ],
-            "silent": true
-        },
+  "editor.lineNumbers": "relative",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.sneak": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-n>"],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+        //"workbench.action.focusSideBar"
+      ]
+    },
+    {
+      "before": ["<C-b>"],
+      "commands": ["workbench.action.toggleAuxiliaryBar"]
+    },
 
-		{
-            "before": ["<C-g>", "l"],
-            "commands": [
-				"workbench.view.scm"
-			],
-        },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<C-w>", "j"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<C-w>", "k"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<C-w>", "l"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["$"],
+      "after": ["g", "$"]
+    },
+    {
+      "before": ["^"],
+      "after": ["g", "^"]
+    },
+    {
+      "before": ["J"],
+      "after": ["g", "J"]
+    },
+    {
+      "before": ["]"],
+      "commands": ["workbench.action.editor.nextChange"],
+      "silent": true
+    },
+    {
+      "before": ["<space>"],
+      "commands": ["editor.action.formatDocument"],
+      "silent": true
+    },
+    {
+      "before": ["<C-g>", "d"],
+      "commands": ["git.openChange"],
+      "silent": true
+    },
 
-		{
-            "before": ["<C-g>", "L"],
-            "commands": [
-				"gitlens.compareWorkingWith"
-			],
-        },
-		{
-			"before": ["<C-w>", "l"],
-			"commands": [
-				"workbench.action.compareEditor.focusPrimarySide"
-			]
-		},
-		{
-			"before": ["<C-w>", "h"],
-			"commands": [
-				"workbench.action.compareEditor.focusSecondarySide"
-			]
-		},
-		{
-			"before": ["<C-g>", "h"],
-			"commands": [
-				"workbench.action.files.revert"
-			]
-		},
-		{"before": ["f"], "after": [ "s" ]},
-		{"before": ["F"], "after": [ "S" ]},
-		{"before": ["g", "z"], "commands": [ "workbench.action.findInFiles" ]},
-	],
-	"vim.operatorPendingModeKeyBindingsNonRecursive": [
-		{"before": ["i","w"], "after": ["i", "\\", "w"]},
-	],
-	"vim.normalModeKeyBindings": [
-		{"before": ["w"], "after": ["\\", "w"]},
-		{"before": ["b"], "after": ["\\", "b"]},
-		{"before": ["e"], "after": ["\\", "e"]},
-		{"before": ["s", "a"], "after": ["y", "s"]},
-		{"before": ["s", "d"], "after": ["d", "s"]},
-		{"before": ["s", "r"], "after": ["c", "s"]},
-		{"before": ["]"], "commands": [ "workbench.action.compareEditor.nextChange" ]},
-		{"before": ["R"], "commands": [ "editor.action.rename" ]},
+    {
+      "before": ["<C-g>", "l"],
+      "commands": ["workbench.view.scm"]
+    },
 
-	],
-	"vim.visualModeKeyBindings": [
-		{"before": ["s", "a"], "after": ["S"]},
-		{"before": ["s", "r"], "after": ["c", "s"]},
-		{
-			"before": [
-				"<C-j>"
-			],
-			"after": [
-				"<C-w>",
-				"j"
-			]
-		},
-		{
-			"before": [
-				"<C-k>"
-			],
-			"after": [
-				"<C-w>",
-				"k"
-			]
-		},
-		{
-			"before": [
-				"<C-l>"
-			],
-			"after": [
-				"<C-w>",
-				"l"
-			]
-		},
-		{
-			"before": [
-				"<C-h>"
-			],
-			"after": [
-				"<C-w>",
-				"h"
-			]
-		},
+    {
+      "before": ["<C-g>", "L"],
+      "commands": ["gitlens.compareWorkingWith"]
+    },
+    {
+      "before": ["<C-w>", "l"],
+      "commands": ["workbench.action.compareEditor.focusPrimarySide"]
+    },
+    {
+      "before": ["<C-w>", "h"],
+      "commands": ["workbench.action.compareEditor.focusSecondarySide"]
+    },
+    {
+      "before": ["<C-g>", "h"],
+      "commands": ["workbench.action.files.revert"]
+    },
+    { "before": ["f"], "after": ["s"] },
+    { "before": ["F"], "after": ["S"] },
+    { "before": ["g", "z"], "commands": ["workbench.action.findInFiles"] },
+    {
+      "before": ["]", "g"],
+      "commands": ["editor.action.marker.nextInFiles"],
+      "silent": true
+    },
+    {
+      "before": ["[", "g"],
+      "commands": ["editor.action.marker.prevInFiles"],
+      "silent": true
+    }
+  ],
+  "vim.operatorPendingModeKeyBindingsNonRecursive": [
+    { "before": ["i", "w"], "after": ["i", "\\", "w"] }
+  ],
+  "vim.normalModeKeyBindings": [
+    { "before": ["w"], "after": ["\\", "w"] },
+    { "before": ["b"], "after": ["\\", "b"] },
+    { "before": ["e"], "after": ["\\", "e"] },
+    { "before": ["s", "a"], "after": ["y", "s"] },
+    { "before": ["s", "d"], "after": ["d", "s"] },
+    { "before": ["s", "r"], "after": ["c", "s"] },
+    {
+      "before": ["]"],
+      "commands": ["workbench.action.compareEditor.nextChange"]
+    },
+    { "before": ["R"], "commands": ["editor.action.rename"] }
+  ],
+  "vim.visualModeKeyBindings": [
+    { "before": ["s", "a"], "after": ["S"] },
+    { "before": ["s", "r"], "after": ["c", "s"] },
+    {
+      "before": ["<C-j>"],
+      "after": ["<C-w>", "j"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<C-w>", "k"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<C-w>", "l"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<C-w>", "h"]
+    },
 
-		{
-			"before": [
-				"<C-n>"
-			],
-			"commands": [
-				"workbench.action.toggleSidebarVisibility"
-			]
-		},
-	],
-	"vim.handleKeys": {
-		"<C-d>": true,
-		"<C-s>": false,
-		"<C-z>": false,
-		"<C-w>": true,
-		"<C-p>": false
-	},
+    {
+      "before": ["<C-n>"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false,
+    "<C-w>": true,
+    "<C-p>": false,
+    "<C-b>": true,
+    "<C-n>": true
+  },
 
-	"vim.visualModeKeyBindingsNonRecursive": [
-		{
-			"before": [
-				"V"
-			],
-			"after": [
-				"^",
-				"o",
-				"$"
-			]
-		},
-		{
-			"before": [
-				"p"
-			],
-			"after": [
-				"p",
-				"g",
-				"v",
-				"y"
-			]
-		},
-		{
-			"before": [
-				"J"
-			],
-			"after": [
-				"g",
-				"J"
-			]
-		},
-		{"before": ["s", "a"], "after": ["y", "a"]},
-		{"before": ["<space>"], "commands": ["editor.action.formatSelection"]},
-	],
-	"vim.insertModeKeyBindingsNonRecursive": [
-		{
-			"before": [
-				"<C-u>"
-			],
-			"after": [
-				"<Esc>",
-				"<C-u>",
-				"i"
-			]
-		},
-		{
-			"before": [
-				"<C-d>"
-			],
-			"after": [
-				"<Esc>",
-				"<C-d>",
-				"i"
-			]
-		},
-		{
-			"before": [
-				"<C-v>"
-			],
-			"after": [
-				"<Esc>",
-				"v",
-				"<C-v>"
-			]
-		},
-		{
-			"before": [
-				"<C-j>"
-			],
-			"after": [
-				"<Esc>",
-				"<C-w>",
-				"j",
-			]
-		},
-		{
-			"before": [
-				"<C-k>"
-			],
-			"after": [
-				"<Esc>",
-				"<C-w>",
-				"k",
-			]
-		},
-		{
-			"before": [
-				"<C-l>"
-			],
-			"after": [
-				"<Esc>",
-				"<C-w>",
-				"l",
-			]
-		},
-		{
-			"before": [
-				"<C-h>"
-			],
-			"after": [
-				"<Esc>",
-				"<C-w>",
-				"h",
-			]
-		},
-	],
-	"vim.camelCaseMotion.enable": true,
-	"vim.surround": true,
-	"[python]": {
-		"editor.formatOnType": true
-	},
-	"workbench.editor.showTabs": "single",
-	"workbench.colorTheme": "SynthWave '84",
-	"editor.inlineSuggest.enabled": true,
-	"gitlens.currentLine.enabled": false,
-	"gitlens.hovers.currentLine.over": "line",
-	"gitlens.codeLens.enabled": false,
-	"[typescript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
-	},
-	"window.zoomLevel": 1,
-	"vim.showMarksInGutter": true
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["V"],
+      "after": ["^", "o", "$"]
+    },
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    },
+    {
+      "before": ["J"],
+      "after": ["g", "J"]
+    },
+    { "before": ["s", "a"], "after": ["y", "a"] },
+    { "before": ["<space>"], "commands": ["editor.action.formatSelection"] }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-n>"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<C-u>"],
+      "after": ["<Esc>", "<C-u>", "i"]
+    },
+    {
+      "before": ["<C-d>"],
+      "after": ["<Esc>", "<C-d>", "i"]
+    },
+    {
+      "before": ["<C-v>"],
+      "after": ["<Esc>", "v", "<C-v>"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<Esc>", "<C-w>", "j"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<Esc>", "<C-w>", "k"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<Esc>", "<C-w>", "l"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<Esc>", "<C-w>", "h"]
+    }
+  ],
+  "vim.camelCaseMotion.enable": true,
+  "vim.surround": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  //"workbench.editor.showTabs": "single",
+  "workbench.colorTheme": "SynthWave '84",
+  "editor.inlineSuggest.enabled": true,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "window.zoomLevel": 1,
+  "vim.showMarksInGutter": true,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
 //[
 //    {
