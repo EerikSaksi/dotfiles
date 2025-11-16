@@ -43,4 +43,14 @@
     "command": "workbench.action.toggleSidebarVisibility",
     "when":"sideBarFocus"
   },
+  {
+    "key": "ctrl+h",
+    "command": "diffEditor.switchSide",
+    "when": "inDiffEditor"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "diffEditor.switchSide",
+    "when": "inDiffEditor"
+  },
 ]
