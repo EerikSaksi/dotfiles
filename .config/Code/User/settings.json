@@ -5,6 +5,24 @@
   "vim.sneak": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["<C-g>", "d"],
+      "commands": [
+				"gitlens.graph.compareBranchWithHead"
+      ]
+    },
+    {
+      "before": ["<C-g>", "D"],
+      "commands": [
+				"gitlens.diffWithRevisionFrom"
+      ]
+    },
+    {
+      "before": ["<C-g>", "l"],
+      "commands": [
+        "gitlens.openOnlyChangedFiles"
+      ]
+    },
+    {
       "before": ["<C-n>"],
       "commands": [
         "workbench.action.toggleSidebarVisibility"
@@ -59,31 +77,12 @@
       "silent": true
     },
     {
-      "before": ["<C-g>", "d"],
-      "commands": ["git.openChange"],
-      "silent": true
-    },
-
-    {
-      "before": ["<C-g>", "l"],
-      "commands": ["workbench.view.scm"]
-    },
-
-    {
-      "before": ["<C-g>", "L"],
-      "commands": ["gitlens.compareWorkingWith"]
-    },
-    {
       "before": ["<C-w>", "l"],
       "commands": ["workbench.action.compareEditor.focusPrimarySide"]
     },
     {
       "before": ["<C-w>", "h"],
       "commands": ["workbench.action.compareEditor.focusSecondarySide"]
-    },
-    {
-      "before": ["<C-g>", "h"],
-      "commands": ["workbench.action.files.revert"]
     },
     { "before": ["f"], "after": ["s"] },
     { "before": ["F"], "after": ["S"] },
@@ -116,6 +115,24 @@
     { "before": ["R"], "commands": ["editor.action.rename"] }
   ],
   "vim.visualModeKeyBindings": [
+    {
+      "before": ["<C-g>", "d"],
+      "commands": [
+				"gitlens.graph.compareBranchWithHead"
+      ]
+    },
+    {
+      "before": ["<C-g>", "D"],
+      "commands": [
+				"gitlens.diffWithRevisionFrom"
+      ]
+    },
+    {
+      "before": ["<C-g>", "k"],
+      "commands": [
+        "gitlens.openOnlyChangedFiles"
+      ]
+    },
     { "before": ["s", "a"], "after": ["S"] },
     { "before": ["s", "r"], "after": ["c", "s"] },
     {
@@ -167,6 +184,24 @@
     { "before": ["<space>"], "commands": ["editor.action.formatSelection"] }
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-g>", "d"],
+      "commands": [
+				"gitlens.graph.compareBranchWithHead"
+      ]
+    },
+    {
+      "before": ["<C-g>", "D"],
+      "commands": [
+				"gitlens.diffWithRevisionFrom"
+      ]
+    },
+    {
+      "before": ["<C-g>", "k"],
+      "commands": [
+        "gitlens.openOnlyChangedFiles"
+      ]
+    },
     {
       "before": ["<C-n>"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
