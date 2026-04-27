@@ -50,6 +50,10 @@ end, { desc = "Format document", silent = true })
 -- Worktree status: sibling repos with meaningful changes
 map("n", "<C-g>s", function() require("worktree-status").open() end, { desc = "Worktree changed repos" })
 
+-- Open files Claude referenced (always reloads from file first)
+map("n", "<C-g>c", function() require("claude-refs").reload(); require("claude-refs").open() end, { desc = "Open Claude-referenced files" })
+map("n", "<C-g>C", function() require("claude-refs").clear() end, { desc = "Clear Claude file refs" })
+
 -- Clear search highlight with Escape
 map("n", "<Esc>", "<cmd>nohlsearch<cr>", { silent = true })
 
